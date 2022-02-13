@@ -1,0 +1,19 @@
+{{ $container := 0 -}}
+{{ if or (eq (get .chezmoi.osRelease "variantID") "container") (env "container") (env "REMOTE_CONTAINERS") (env "CODESPACES") -}}
+    {{ $container = 1 -}}
+{{ else -}}
+    {{ $chassisType := (output "hostnamectl" "--json=short" | mustFromJson).Chassis -}}
+    {{ if eq $chassisType "container" -}}
+        {{ $container = 1 -}}
+    {{ end -}}
+{{- end -}}
+
+[data]
+{{- if not $container }}
+    name = {{ promptString "name" | quote }}
+    email = {{ promptString "email" | quote }}
+    terminal = "kitty"
+{{- else }}
+    terminal = ""
+{{- end }}
+    vim = "nvim"

@@ -1,0 +1,70 @@
+[core]
+    pager = "{ [ $COLUMNS -lt 160 ] && delta || delta --side-by-side -w ${FZF_PREVIEW_COLUMNS:-$COLUMNS}; }"
+[interactive]
+    diffFilter = delta --color-only
+[credential]
+    helper = cache --timeout=3600
+[diff]
+{{- if eq .terminal "kitty" }}
+    tool = kitty
+    guitool = kitty.gui
+{{- end }}
+    algorithm = histogram
+[difftool]
+    prompt = false
+    trustExitCode = true
+[difftool "kitty"]
+    cmd = kitty +kitten diff $LOCAL $REMOTE
+[difftool "kitty.gui"]
+    cmd = kitty kitty +kitten diff $LOCAL $REMOTE
+[difftool "vimdiff"]
+    path = {{ .vim }}
+[alias]
+    d = !"git difftool --no-symlinks --dir-diff"
+    ydiff = !"ydiff -s -w0"
+    st = status
+    co = checkout
+    ci = commit
+    br = branch
+    du = diff -b
+    dh = diff -b HEAD^!
+    ds = diff -b --staged
+    db = diff -b master...HEAD
+    rb = rebase
+    rbi = rebase -i
+    rbc = rebase --continue
+    rba = rebase --abort
+    cp = cherry-pick
+    rg = grep -p --heading --break
+[rebase]
+    autosquash = true
+[icdiff]
+    pager = less
+[delta]
+    syntax-theme = TwoDark
+[grep]
+    lineNumber = true
+    patternType = extended
+[submodule]
+    recurse = true
+    fetchJobs = 0
+[status]
+    submoduleSummary = true
+    showStash = true
+[pull]
+    rebase = true
+[fetch]
+    prune = true
+    parallel = 0
+[user]
+    name = {{ .name }}
+    email = {{ .email }}
+    signingKey = ~/.ssh/id_ed25519
+[commit]
+    gpgsign = true
+[gpg]
+    format = ssh
+[gpg "ssh"]
+    allowedSignersFile = ~/.config/git/allowed_signers
+[help]
+    autocorrect = prompt

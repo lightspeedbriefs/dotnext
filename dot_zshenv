@@ -1,0 +1,93 @@
+binpaths=(~/.cargo/bin ~/.local/bin)
+dhpath=/usr/share/doc/git/contrib/diff-highlight
+if (( $+commands[diff-highlight] == 0 )) && [[ -x $dhpath/diff-highlight ]] ; then
+    binpaths+=($dhpath)
+fi
+unset dhpath
+for binpath in $binpaths ; do
+    if [[ -d $binpath ]] ; then
+        export PATH=$binpath:$PATH
+    fi
+done
+if [[ -x ~/.linuxbrew/bin/brew ]] ; then
+    eval $(~/.linuxbrew/bin/brew shellenv)
+elif [[ -x /home/linuxbrew/.linuxbrew/bin/brew ]] ; then
+    eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+fi
+unset binpaths
+export PYTHONPATH=/usr/lib64/python2.7/site-packages/lldb
+export CCACHE_PATH=/usr/bin
+export LESS='-JFXRs'
+export PAGER=less
+if (( $+commands[code] )) && [[ "$TERM_PROGRAM" == vscode ]] ; then
+    export EDITOR='code -r --wait'
+    export VISUAL='code -r --wait'
+    export SUDO_EDITOR='code -r --wait'
+elif (( $+commands[nvim] )) ; then
+    export EDITOR=nvim
+    export VISUAL=nvim
+    export SUDO_EDITOR=nvim
+elif (( $+commands[vim] )) ; then
+    export EDITOR=vim
+    export VISUAL=vim
+    export SUDO_EDITOR=vim
+fi
+export HSTR_CONFIG=hicolor,prompt-bottom
+export HISTFILE=~/.zsh_history
+export HISTFILESIZE=40000
+export HISTSIZE=40000
+export SAVEHIST=40000
+export HISTTIMEFORMAT="[%Y-%m-%d %H:%M:%S] "
+export HISTCONTROL="ignoredups"
+export GCC_COLORS="error=01;31:warning=01;35:note=01;36:range1=32:range2=34:locus=01:\
+quote=01:path=01;36:fixit-insert=32:fixit-delete=31:\
+diff-filename=01:diff-hunk=32:diff-delete=31:diff-insert=32:\
+type-diff=01;32"
+export GCC_URLS=bel
+export ENHANCD_FILTER=fzf:fzy:percol:pick:selecta:fpp
+export ENHANCD_DISABLE_HYPHEN=1
+export BAT_THEME=TwoDark
+# Nord colorscheme
+export FZF_DEFAULT_OPTS='
+  --ansi
+  --color fg:#D8DEE9,bg:#2E3440,hl:#A3BE8C,fg+:#D8DEE9,bg+:#434C5E,hl+:#A3BE8C
+  --color pointer:#BF616A,info:#4C566A,spinner:#4C566A,header:#4C566A,prompt:#81A1C1,marker:#EBCB8B
+'
+export SKIM_DEFAULT_OPTIONS="$FZF_DEFAULT_OPTS"
+export FZF_CTRL_T_OPTS="--exit-0"
+if (( $+commands[bat] )) ; then
+    export LESSOPEN='|bat --color=always %s'
+    export FZF_CTRL_T_OPTS="$FZF_CTRL_T_OPTS --preview 'bat --color=always {}'"
+fi
+export FZF_ALT_C_OPTS="--exit-0"
+if (( $+commands[lsd] )) ; then
+    export FZF_ALT_C_OPTS="$FZF_ALT_C_OPTS --preview 'lsd --group-dirs=first --icon=always --color=always {}'"
+fi
+if (( $+commands[fd] )) ; then
+    export FZF_DEFAULT_COMMAND='fd -t f --color=always'
+    export FZF_ALT_C_COMMAND='fd -t d --hidden --no-ignore-vcs --exclude .git'
+elif (( $+commands[rg] )) ; then
+    export FZF_DEFAULT_COMMAND='rg --files'
+elif (( $+commands[ag] )) ; then
+    export FZF_DEFAULT_COMMAND='ag -g ""'
+fi
+export FZF_COMPLETION_TRIGGER='::'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export SKIM_DEFAULT_COMMAND="$FZF_DEFAULT_COMMAND"
+if [[ -n "$DISPLAY" ]] ; then
+    export BROWSER=firefox
+fi
+
+# Less Colors for Man Pages
+export LESS_TERMCAP_mb=$'\E[01;31m' # begin blinking
+export LESS_TERMCAP_md=$'\E[01;31m' # begin bold
+export LESS_TERMCAP_me=$'\E[0m' # end mode
+export LESS_TERMCAP_se=$'\E[0m' # end standout-mode
+export LESS_TERMCAP_so=$'\E[01;44;33m' # begin standout-mode - info box
+export LESS_TERMCAP_ue=$'\E[0m' # end underline
+export LESS_TERMCAP_us=$'\E[01;32m' # begin underline
+# For colored man pages, Konsole requires this set (see: https://unix.stackexchange.com/a/147)
+export GROFF_NO_SGR=yes
+# On OpenSuSE, show the first matching man page rather than a list of matching man pages
+# (see https://www.suse.com/releasenotes/i386/openSUSE/11.1/RELEASE-NOTES.en.html)
+export MAN_POSIXLY_CORRECT=1
