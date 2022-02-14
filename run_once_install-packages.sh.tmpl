@@ -72,8 +72,7 @@ install_fedora_desktop() {
          install_ubuntu_container
     {{ end -}}
 {{ else -}}
-    {{ $chassisType := (output "hostnamectl" "--json=short" | mustFromJson).Chassis -}}
-    {{ if eq $chassisType "container" -}}
+    {{ if ne ((output "sh" "-c" "systemd-detect-virt -c || true") | trim) "none" -}}
         {{ if eq .chezmoi.osRelease.id "fedora" -}}
             install_fedora_container
         {{ else if eq .chezmoi.osRelease.id "ubuntu" -}}
