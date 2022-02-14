@@ -5,14 +5,20 @@
     {{ if ne ((output "sh" "-c" "systemd-detect-virt -c || true") | trim) "none" -}}
         {{ $container = 1 -}}
     {{ end -}}
-{{- end -}}
-
+{{ end -}}
+{{ $userInfo := dict }}
+{{ if eq .chezmoi.osRelease.id "fedora" -}}
+    {{ $userInfo = output "userdbctl" "--output=json" "user" .chezmoi.username | mustFromJson -}}
+{{ end -}}
+{{ $name := or (get . "name") (get $userInfo "realName") (output "git" "config" "--get" "user.name" | trim) -}}
+{{ $email := or (get . "email") (get $userInfo "emailAddress") (output "git" "config" "--get" "user.email" | trim) -}}
 [data]
-{{- if not $container }}
-    name = {{ promptString "name" | quote }}
-    email = {{ promptString "email" | quote }}
-    terminal = "kitty"
+{{- if stdinIsATTY }}
+    name = {{ promptString "name" $name | quote }}
+    email = {{ promptString "email" $email | quote }}
 {{- else }}
-    terminal = ""
+    name = {{ $name | quote }}
+    email = {{ $email | quote }}
 {{- end }}
     vim = "nvim"
+    container = {{ $container }}

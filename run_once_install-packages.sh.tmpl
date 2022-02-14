@@ -11,6 +11,7 @@ install_ubuntu_container() {
     sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
         https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
     nvim -es -u ~/.config/nvim/init.vim -i NONE -c "PlugInstall" -c "qa"
+    # TODO chsh (use systemd-homed)
 }
 
 install_ubuntu_desktop() {
@@ -32,6 +33,8 @@ install_ubuntu_desktop() {
     nvim -es -u ~/.config/nvim/init.vim -i NONE -c "PlugInstall" -c "qa"
     curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
         https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    # TODO chsh (use systemd-homed)
+    pipx install konsave # see also: konfsave
 }
 
 install_fedora_container() {
@@ -41,6 +44,7 @@ install_fedora_container() {
     sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
         https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
     nvim -es -u ~/.config/nvim/init.vim -i NONE -c "PlugInstall" -c "qa"
+    # TODO chsh (use systemd-homed)
 }
 
 install_fedora_desktop() {
@@ -68,26 +72,20 @@ install_fedora_desktop() {
     nvim -es -u ~/.config/nvim/init.vim -i NONE -c "PlugInstall" -c "qa"
     curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
         https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    # TODO chsh (use systemd-homed)
+    pipx install konsave # see also: konfsave
 }
 
-{{ if or (eq (get .chezmoi.osRelease "variantID") "container") (env "container") (env "REMOTE_CONTAINERS") (env "CODESPACES") -}}
-    {{ if eq .chezmoi.osRelease.id "fedora" -}}
+{{ if .container -}}
+    {{- if eq .chezmoi.osRelease.id "fedora" -}}
          install_fedora_container
-    {{ else if eq .chezmoi.osRelease.id "ubuntu" -}}
+    {{- else if eq .chezmoi.osRelease.id "ubuntu" -}}
          install_ubuntu_container
-    {{ end -}}
-{{ else -}}
-    {{ if ne ((output "sh" "-c" "systemd-detect-virt -c || true") | trim) "none" -}}
-        {{ if eq .chezmoi.osRelease.id "fedora" -}}
-            install_fedora_container
-        {{ else if eq .chezmoi.osRelease.id "ubuntu" -}}
-             install_ubuntu_container
-        {{ end -}}
-    {{ else -}}
-        {{ if eq .chezmoi.osRelease.id "fedora" -}}
-             install_fedora_desktop
-        {{ else if eq .chezmoi.osRelease.id "ubuntu" -}}
-             install_ubuntu_desktop
-        {{ end -}}
-    {{ end -}}
+    {{- end -}}
+{{- else -}}
+    {{- if eq .chezmoi.osRelease.id "fedora" -}}
+         install_fedora_desktop
+    {{- else if eq .chezmoi.osRelease.id "ubuntu" -}}
+         install_ubuntu_desktop
+    {{- end -}}
 {{- end -}}
