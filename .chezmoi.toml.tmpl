@@ -2,8 +2,7 @@
 {{ if or (eq (get .chezmoi.osRelease "variantID") "container") (env "container") (env "REMOTE_CONTAINERS") (env "CODESPACES") -}}
     {{ $container = 1 -}}
 {{ else -}}
-    {{ $chassisType := (output "hostnamectl" "--json=short" | mustFromJson).Chassis -}}
-    {{ if eq $chassisType "container" -}}
+    {{ if ne ((output "sh" "-c" "systemd-detect-virt -c || true") | trim) "none" -}}
         {{ $container = 1 -}}
     {{ end -}}
 {{- end -}}
