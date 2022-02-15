@@ -6,7 +6,7 @@ if [[ $EUID -eq 0 ]] ; then
 fi
 
 install_ubuntu_container() {
-    $SUDO apt install -y --no-install-recommends neovim fd-find ripgrep fzf htop zsh zsh-syntax-highlighting zsh-autosuggestions bat ncdu kitty-terminfo less curl git {{ if ne .chezmoi.osRelease.versionID "20.04" }}zoxide hstr{{ end }}
+    $SUDO apt install -y --no-install-recommends {{ if eq .chezmoi.osRelease.versionID "20.04" }}-o Dpkg::Options::="--force-overwrite"{{ else }}zoxide hstr{{ end }} neovim fd-find ripgrep fzf htop zsh zsh-syntax-highlighting zsh-autosuggestions bat ncdu kitty-terminfo less curl git
     if ! command -v starship ; then
         sh -c "$(curl -fsSL https://starship.rs/install.sh)"
     fi
