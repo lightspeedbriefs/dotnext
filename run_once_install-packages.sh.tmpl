@@ -8,7 +8,7 @@ fi
 install_ubuntu_container() {
     $SUDO apt install -y --no-install-recommends {{ if eq .chezmoi.osRelease.versionID "20.04" }}-o Dpkg::Options::="--force-overwrite"{{ else }}zoxide hstr{{ end }} neovim fd-find ripgrep fzf htop zsh zsh-syntax-highlighting zsh-autosuggestions bat ncdu kitty-terminfo less curl git
     if ! command -v starship ; then
-        sh -c "$(curl -fsSL https://starship.rs/install.sh)"
+        sh -c "FORCE=1 $(curl -fsSL https://starship.rs/install.sh)"
     fi
     sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
         https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
@@ -42,7 +42,7 @@ install_ubuntu_desktop() {
 install_fedora_container() {
     $SUDO dnf -y install neovim ripgrep fd-find zoxide lsd procs fzf bat zsh zsh-autosuggestions zsh-syntax-highlighting htop hstr git-delta dua-cli ncdu prettyping langpacks-core-en kitty-terminfo less curl exa tokei cloc gitui git
     $SUDO rpm --install https://github.com/evilmartians/lefthook/releases/latest/download/lefthook_amd64.rpm
-    sh -c "$(curl -fsSL https://starship.rs/install.sh)"
+    sh -c "FORCE=1 $(curl -fsSL https://starship.rs/install.sh)"
     sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
         https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
     nvim -es -u ~/.config/nvim/init.vim -i NONE -c "PlugInstall" -c "qa"
