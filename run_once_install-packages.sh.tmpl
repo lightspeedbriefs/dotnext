@@ -7,7 +7,9 @@ fi
 
 install_ubuntu_container() {
     $SUDO apt install -y --no-install-recommends neovim zoxide fd-find ripgrep fzf htop zsh zsh-syntax-highlighting zsh-autosuggestions bat hstr ncdu kitty-terminfo less curl git
-    sh -c "$(curl -fsSL https://starship.rs/install.sh)"
+    if ! command -v starship ; then
+        sh -c "$(curl -fsSL https://starship.rs/install.sh)"
+    fi
     sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
         https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
     nvim -es -u ~/.config/nvim/init.vim -i NONE -c "PlugInstall" -c "qa"
@@ -15,6 +17,8 @@ install_ubuntu_container() {
 }
 
 install_ubuntu_desktop() {
+    $SUDO snap install starship lxd procs
+    $SUDO snap install --classic lefthook
     # Weak attempt to detect we are headless
     if [[ ! -d /usr/share/doc/ubuntu-desktop ]] ; then
         install_ubuntu_container
@@ -26,8 +30,6 @@ install_ubuntu_desktop() {
     if ! $SUDO systemd-detect-virt -q ; then
         flatpak install -y flathub com.valvesoftware.Steam
     fi
-    $SUDO snap install starship lxd procs
-    $SUDO snap install --classic lefthook
     sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
         https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
     nvim -es -u ~/.config/nvim/init.vim -i NONE -c "PlugInstall" -c "qa"
