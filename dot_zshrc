@@ -352,14 +352,25 @@ _fzf_comprun() {
 [ -f /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh ] && source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 [ -f /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ] && source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
+if [[ -f ~/.local/share/enhancd/init.sh ]] ; then
+    source ~/.local/share/enhancd/init.sh
+    if (( $+commands[lsd] )) ; then
+        alias cd="FZF_DEFAULT_OPTS=\"\$FZF_DEFAULT_OPTS --preview 'lsd --group-dirs=first --icon=always --color=always {1}'\" __enhancd::cd"
+    fi
+fi
+
+if [[ -f ~/.local/share/forgit/forgit.plugin.zsh && $+commands[fzf] ]] ; then
+    source ~/.local/share/forgit/forgit.plugin.zsh
+fi
+
+[ -f ~/.local/share/zsh-autoswitch-virtualenv/autoswitch_virtualenv.plugin.zsh ] && source ~/.local/share/zsh-autoswitch-virtualenv/autoswitch_virtualenv.plugin.zsh
+
 if [[ -f ~/.zplug/init.zsh ]] ; then
     source ~/.zplug/init.zsh
 
     zplug "b4b4r07/enhancd", use:init.sh
 
     zplug "facebook/pathpicker", as:command, use:fpp
-
-    zplug "supercrabtree/k"
 
     zplug "lib/termsupport", from:oh-my-zsh
 
@@ -387,7 +398,6 @@ if [[ -f ~/.zplug/init.zsh ]] ; then
 
     zplug load # --verbose
 
-    alias cd="FZF_DEFAULT_OPTS=\"\$FZF_DEFAULT_OPTS --preview 'lsd --group-dirs=first --icon=always --color=always {1}'\" __enhancd::cd"
 fi
 
 (( $+commands[doge] )) && doge
