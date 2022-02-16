@@ -584,6 +584,8 @@ augroup END
 
 " {{{ Plugin config
 
+let g:loaded_python_provider = 0
+
 " multiple-cursors config
 let g:multi_cursor_use_default_mapping=0
 let g:multi_cursor_next_key='<C-j>'
