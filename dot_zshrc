@@ -48,9 +48,14 @@ fi
 if (( $+commands[fd] )) ; then
     alias findf='fd -t f'
     alias findd='fd -t d'
+elif (( $+commands[fdfind] )) ; then
+    alias fd=fdfind
 else
     alias findf='find . -type f -name'
     alias findd='find . -type d -name'
+fi
+if (( $+commands[batcat] )) ; then
+    alias bat=batcat
 fi
 # GNU diff received support for directly outputting
 # in color in 2016: https://git.savannah.gnu.org/cgit/diffutils.git/tree/NEWS
