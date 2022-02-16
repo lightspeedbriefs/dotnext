@@ -10,6 +10,9 @@ install_ubuntu_container() {
     if ! command -v starship ; then
         sh -c "FORCE=1 $(curl -fsSL https://starship.rs/install.sh)"
     fi
+    if command -v python3 &>/dev/null ; then
+        $SUDO apt install -y --no-install-recommends python3-pynvim
+    fi
     nvim -es -u ~/.config/nvim/init.vim -i NONE -c "PlugInstall" -c "qa"
     # TODO chsh (use systemd-homed)
 }
@@ -36,6 +39,9 @@ install_ubuntu_desktop() {
 
 install_fedora_container() {
     $SUDO dnf -y install neovim ripgrep fd-find zoxide lsd procs fzf bat zsh zsh-autosuggestions zsh-syntax-highlighting htop hstr git-delta dua-cli ncdu prettyping langpacks-core-en kitty-terminfo less curl exa tokei cloc gitui git tig ctags tree
+    if command -v python &>/dev/null ; then
+        $SUDO dnf -y install python3-pynvim
+    fi
     $SUDO rpm --install https://github.com/evilmartians/lefthook/releases/latest/download/lefthook_amd64.rpm
     sh -c "FORCE=1 $(curl -fsSL https://starship.rs/install.sh)"
     nvim -es -u ~/.config/nvim/init.vim -i NONE -c "PlugInstall" -c "qa"
