@@ -12,15 +12,19 @@
     exact = true
     stripComponents = 1
     refreshPeriod = "168h"
-[".local/share/forgit"]
-    type = "archive"
-    url = "https://github.com/wfxr/forgit/archive/master.tar.gz"
-    exact = true
-    stripComponents = 1
+[".local/share/forgit.zsh"]
+    type = "file"
+    url = "https://raw.githubusercontent.com/wfxr/forgit/master/forgit.plugin.zsh"
     refreshPeriod = "168h"
-[".local/share/zsh-autoswitch-virtualenv"]
-    type = "archive"
-    url = "https://github.com/MichaelAquilina/zsh-autoswitch-virtualenv/archive/master.tar.gz"
-    exact = true
-    stripComponents = 1
+[".local/share/zsh-autoswitch-virtualenv.zsh"]
+    type = "file"
+    url = "https://raw.githubusercontent.com/MichaelAquilina/zsh-autoswitch-virtualenv/master/autoswitch_virtualenv.plugin.zsh"
+    refreshPeriod = "168h"
+[".local/share/zsh-termsupport.zsh"]
+    type = "file"
+    url = "https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/lib/termsupport.zsh"
+    refreshPeriod = "168h"
+[".local/share/nord_dir_colors"]
+    type = "file"
+    url = "https://raw.githubusercontent.com/arcticicestudio/nord-dircolors/develop/src/dir_colors"
     refreshPeriod = "168h"

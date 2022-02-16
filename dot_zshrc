@@ -175,8 +175,8 @@ bindkey '\C-x\C-e' edit-command-line
 
 bindkey '^ ' autosuggest-execute
 
-if [[ -f ~/.dir_colors && (( $+commands[dircolors] )) ]] ; then
-    eval $(dircolors ~/.dir_colors)
+if [[ -f ~/.local/share/nord_dir_colors && ]] && (( $+commands[dircolors] )) ; then
+    eval $(dircolors ~/.local/share/nord_dir_colors)
     zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 fi
 
@@ -359,46 +359,9 @@ if [[ -f ~/.local/share/enhancd/init.sh ]] ; then
     fi
 fi
 
-if [[ -f ~/.local/share/forgit/forgit.plugin.zsh && $+commands[fzf] ]] ; then
-    source ~/.local/share/forgit/forgit.plugin.zsh
-fi
-
-[ -f ~/.local/share/zsh-autoswitch-virtualenv/autoswitch_virtualenv.plugin.zsh ] && source ~/.local/share/zsh-autoswitch-virtualenv/autoswitch_virtualenv.plugin.zsh
-
-if [[ -f ~/.zplug/init.zsh ]] ; then
-    source ~/.zplug/init.zsh
-
-    zplug "b4b4r07/enhancd", use:init.sh
-
-    zplug "facebook/pathpicker", as:command, use:fpp
-
-    zplug "lib/termsupport", from:oh-my-zsh
-
-    zplug "jhawthorn/fzy", \
-        as:command, \
-        hook-build:"make -j$(nproc)"
-
-    zplug "zsh-users/zsh-autosuggestions", at:develop
-
-    # Available in fedora repos but pretty out-of-date
-    zplug "zsh-users/zsh-syntax-highlighting", defer:2
-
-    if (( $+commands[fzf] )) ; then
-        zplug "wfxr/forgit"
-        # zplug "Aloxaf/fzf-tab"
-        # zplug "lincheney/fzf-tab-completion", use:zsh/fzf-zsh-completion.sh
-        # Very cool, but so far a buggy experience
-        # zplug "marlonrichert/zsh-autocomplete"
-    fi
-
-    zplug "MichaelAquilina/zsh-autoswitch-virtualenv"
-
-    # Seems to break things
-    # zplug "zplug/zplug", hook-build:"zplug --self-manage"
-
-    zplug load # --verbose
-
-fi
+[ -f ~/.local/share/zsh-autoswitch-virtualenv.zsh ] && source ~/.local/share/zsh-autoswitch-virtualenv.zsh
+[ -f ~/.local/share/forgit.zsh ] && source ~/.local/share/forgit.zsh
+[ -f ~/.local/share/zsh-termsupport.zsh ] && source ~/.local/share/zsh-termsupport.zsh
 
 (( $+commands[doge] )) && doge
 (( $+commands[linux_logo] )) && linux_logo -u -a

@@ -9,11 +9,6 @@ Plug 'w0rp/ale'
 " Snippets are separated from the engine. Add this if you want them:
 Plug 'honza/vim-snippets'
 
-" Browse tags for the current file to get an overview of its structure in a sidebar
-" Also consider vista.vim when this issue has been fixed:
-" https://github.com/liuchengxu/vista.vim/issues/123
-Plug 'majutsushi/tagbar'
-
 " Nice start screen when vim is opened with no args
 Plug 'mhinz/vim-startify'
 
@@ -48,6 +43,11 @@ Plug 'junegunn/fzf.vim'
 Plug 'junegunn/vim-easy-align'
 
 if executable('ctags')
+    " Browse tags for the current file to get an overview of its structure in a sidebar
+    " Also consider vista.vim when this issue has been fixed:
+    " https://github.com/liuchengxu/vista.vim/issues/123
+    Plug 'majutsushi/tagbar'
+
     " Regenerate tags files while you work
     Plug 'ludovicchabant/vim-gutentags'
 endif
@@ -546,7 +546,9 @@ augroup shebang_chmod
                 \ endif
 augroup END
 
-autocmd BufEnter * nested :call tagbar#autoopen(0)
+if executable('ctags')
+    autocmd BufEnter * nested :call tagbar#autoopen(0)
+endif
 
 "autocmd! BufWritePost * Neomake
 
