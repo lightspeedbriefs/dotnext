@@ -29,19 +29,35 @@
     url = "https://raw.githubusercontent.com/arcticicestudio/nord-dircolors/develop/src/dir_colors"
     type = "file"
     refreshPeriod = "168h"
+[".local/share/konsole/{{ .theme }}.colorscheme"]
+    type = "file"
+    url = "https://raw.githubusercontent.com/arcticicestudio/nord-konsole/develop/src/nord.colorscheme"
+    refreshPeriod = "168h"
 {{ else -}}
 [".config/kitty/{{ .theme }}.conf"]
     type = "file"
     refreshPeriod = "168h"
 {{- if eq .theme "catppuccin" }}
     url = "https://raw.githubusercontent.com/catppuccin/kitty/main/catppuccin.conf"
+[".local/share/konsole/{{ .theme }}.colorscheme"]
+    type = "file"
+    url = "https://raw.githubusercontent.com/catppuccin/konsole/main/Catppuccin.colorscheme"
+    refreshPeriod = "168h"
 {{- else if eq .theme "omni" }}
     url = "https://raw.githubusercontent.com/getomni/kitty/main/omni.conf"
+[".local/share/konsole/{{ .theme }}.colorscheme"]
+    type = "file"
+    url = "https://raw.githubusercontent.com/getomni/konsole/main/Omni.colorscheme"
+    refreshPeriod = "168h"
 {{- else if eq .theme "dracula" }}
     url = "https://raw.githubusercontent.com/dracula/kitty/master/dracula.conf"
 [".config/tig/config"]
     type = "file"
     url = "https://raw.githubusercontent.com/dracula/tig/master/config"
+    refreshPeriod = "168h"
+[".local/share/konsole/{{ .theme }}.colorscheme"]
+    type = "file"
+    url = "https://raw.githubusercontent.com/dracula/konsole/master/Dracula.colorscheme"
     refreshPeriod = "168h"
 {{- end }}
 {{- end }}
