@@ -43,6 +43,10 @@
     type = "file"
     url = "https://raw.githubusercontent.com/catppuccin/konsole/main/Catppuccin.colorscheme"
     refreshPeriod = "168h"
+[".config/btop/themes/{{ .theme }}.theme"]
+    type = "file"
+    url = "https://raw.githubusercontent.com/catppuccin/btop/main/catppuccin.theme"
+    refreshPeriod = "168h"
 {{- else if eq .theme "omni" }}
     url = "https://raw.githubusercontent.com/getomni/kitty/main/omni.conf"
 [".local/share/konsole/{{ .theme }}.colorscheme"]
