@@ -171,6 +171,9 @@ if executable('zig')
     Plug 'ziglang/zig.vim'
 endif
 
+" kitty syntax
+Plug 'fladson/vim-kitty'
+
 " Generate ultra-fast shortcuts to move anywhere
 Plug 'easymotion/vim-easymotion'
 
