@@ -175,10 +175,12 @@ bindkey '\C-x\C-e' edit-command-line
 
 bindkey '^ ' autosuggest-execute
 
+{{ if eq .theme "kitty" -}}
 if [[ -f ~/.local/share/nord_dir_colors && $+commands[dircolors] -eq 1 ]] ; then
     eval $(dircolors ~/.local/share/nord_dir_colors)
     zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 fi
+{{- end }}
 
 # Allow arrow navigation and search in options
 zstyle ':completion:*' menu select search

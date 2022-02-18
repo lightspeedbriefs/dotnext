@@ -24,7 +24,18 @@
     type = "file"
     url = "https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/lib/termsupport.zsh"
     refreshPeriod = "168h"
+{{ if eq .theme "nord" -}}
 [".local/share/nord_dir_colors"]
-    type = "file"
     url = "https://raw.githubusercontent.com/arcticicestudio/nord-dircolors/develop/src/dir_colors"
+{{ else -}}
+[".config/kitty/{{ .theme }}.conf"]
+{{- if eq .theme "catppuccin" }}
+    url = "https://raw.githubusercontent.com/catppuccin/kitty/main/catppuccin.conf"
+{{- else if eq .theme "omni" }}
+    url = "https://raw.githubusercontent.com/getomni/kitty/main/omni.conf"
+{{- else if eq .theme "dracula" }}
+    url = "https://raw.githubusercontent.com/dracula/kitty/master/dracula.conf"
+{{- end }}
+{{- end }}
+    type = "file"
     refreshPeriod = "168h"
