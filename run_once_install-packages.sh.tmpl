@@ -18,8 +18,9 @@ install_ubuntu_container() {
 }
 
 install_ubuntu_desktop() {
-    $SUDO snap install starship lxd procs
+    $SUDO snap install starship lxd procs btop
     $SUDO snap install --classic lefthook
+    $SUDO snap connect btop:removable-media
     # Weak attempt to detect we are headless
     if [[ ! -d /usr/share/doc/ubuntu-desktop ]] ; then
         install_ubuntu_container

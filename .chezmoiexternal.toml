@@ -27,15 +27,21 @@
 {{ if eq .theme "nord" -}}
 [".local/share/nord_dir_colors"]
     url = "https://raw.githubusercontent.com/arcticicestudio/nord-dircolors/develop/src/dir_colors"
+    type = "file"
+    refreshPeriod = "168h"
 {{ else -}}
 [".config/kitty/{{ .theme }}.conf"]
+    type = "file"
+    refreshPeriod = "168h"
 {{- if eq .theme "catppuccin" }}
     url = "https://raw.githubusercontent.com/catppuccin/kitty/main/catppuccin.conf"
 {{- else if eq .theme "omni" }}
     url = "https://raw.githubusercontent.com/getomni/kitty/main/omni.conf"
 {{- else if eq .theme "dracula" }}
     url = "https://raw.githubusercontent.com/dracula/kitty/master/dracula.conf"
-{{- end }}
-{{- end }}
+[".config/tig/config"]
     type = "file"
+    url = "https://raw.githubusercontent.com/dracula/tig/master/config"
     refreshPeriod = "168h"
+{{- end }}
+{{- end }}
