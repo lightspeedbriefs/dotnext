@@ -257,6 +257,7 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'joshdick/onedark.vim'
 Plug 'arcticicestudio/nord-vim'
+Plug 'catppuccin/nvim', {'as': 'catppuccin'}
 
 " }}}
 
@@ -688,7 +689,6 @@ let g:is_bash = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#ycm#enabled = 1
 let g:airline_powerline_fonts = 1
-let g:airline_theme= 'onedark'
 
 " neomake config
 let g:neomake_cpp_clang_args = ["-std=c++17", "-Wall", "-Wextra"]

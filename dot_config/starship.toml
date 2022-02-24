@@ -1,0 +1,7 @@
+[status]
+disabled = false
+map_symbol = true
+format = "[$symbol $common_meaning$signal_name$maybe_int]($style) "
+
+[cmd_duration]
+show_notifications = true

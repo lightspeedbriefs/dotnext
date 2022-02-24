@@ -25,10 +25,6 @@
     url = "https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/lib/termsupport.zsh"
     refreshPeriod = "168h"
 {{ if eq .theme "nord" -}}
-[".local/share/nord_dir_colors"]
-    url = "https://raw.githubusercontent.com/arcticicestudio/nord-dircolors/develop/src/dir_colors"
-    type = "file"
-    refreshPeriod = "168h"
 [".local/share/konsole/{{ .theme }}.colorscheme"]
     type = "file"
     url = "https://raw.githubusercontent.com/arcticicestudio/nord-konsole/develop/src/nord.colorscheme"
@@ -46,12 +42,6 @@
 [".config/btop/themes/{{ .theme }}.theme"]
     type = "file"
     url = "https://raw.githubusercontent.com/catppuccin/btop/main/catppuccin.theme"
-    refreshPeriod = "168h"
-{{- else if eq .theme "omni" }}
-    url = "https://raw.githubusercontent.com/getomni/kitty/main/omni.conf"
-[".local/share/konsole/{{ .theme }}.colorscheme"]
-    type = "file"
-    url = "https://raw.githubusercontent.com/getomni/konsole/main/Omni.colorscheme"
     refreshPeriod = "168h"
 {{- else if eq .theme "dracula" }}
     url = "https://raw.githubusercontent.com/dracula/kitty/master/dracula.conf"
