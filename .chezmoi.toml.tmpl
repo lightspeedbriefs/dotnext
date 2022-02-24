@@ -21,10 +21,11 @@
 {{- if stdinIsATTY }}
     name = {{ promptString "name" $name | quote }}
     email = {{ promptString "email" $email | quote }}
+    theme = {{ promptString "theme" (or (get . "theme") "nord") | quote }}
 {{- else }}
     name = {{ $name | quote }}
     email = {{ $email | quote }}
+    theme = "nord"
 {{- end }}
     vim = "nvim"
-    theme = "catppuccin"
     container = {{ $container }}
