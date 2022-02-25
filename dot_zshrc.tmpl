@@ -235,6 +235,8 @@ zstyle ':completion:*:kill:*' force-list always
 zstyle ':completion:*' rehash true
 # Display while in the completion menu for large lists
 zstyle ':completion:*' select-prompt '%SScrolling active: current selection at %p%s'
+# Show completions in color
+zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 
 zstyle ':completion:*:*:*:users' ignored-patterns \
     '_*' abrt adm akmods amanda apache at avahi avahi-autoipd backup beaglidx \
