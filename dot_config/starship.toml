@@ -43,7 +43,7 @@ else
     if [[ "$GIT_REMOTE" == http* ]] ; then
         GIT_REMOTE_URL="$GIT_REMOTE"
     fi
-    for PATTERN in "https" "http" "ssh" "://" "git" "@"; do
+    for PATTERN in "https://" "http://" "ssh://" "git://" "git@" ; do
         [[ "$GIT_REMOTE" == "$PATTERN"* ]] && GIT_REMOTE="${GIT_REMOTE##"$PATTERN"}"
     done
     for PATTERN in "/" ".git"; do
