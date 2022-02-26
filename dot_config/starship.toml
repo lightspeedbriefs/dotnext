@@ -33,15 +33,17 @@ elif [[ "$GIT_REMOTE" =~ "gitlab" ]]; then
     GIT_REMOTE_SYMBOL=" "
 elif [[ "$GIT_REMOTE" =~ "bitbucket" ]]; then
     GIT_REMOTE_SYMBOL=" "
+elif [[ "$GIT_REMOTE" =~ "git" ]]; then
+    GIT_REMOTE_SYMBOL=" "
 fi
-GIT_REMOTE_URL=
 if [[ -z "$GIT_REMOTE" ]] ; then
     GIT_REMOTE="localhost"
 else
+    GIT_REMOTE_URL=
     if [[ "$GIT_REMOTE" == http* ]] ; then
         GIT_REMOTE_URL="$GIT_REMOTE"
     fi
-    for PATTERN in "https" "http" "git" "://" "@"; do
+    for PATTERN in "https" "http" "ssh" "://" "git" "@"; do
         [[ "$GIT_REMOTE" == "$PATTERN"* ]] && GIT_REMOTE="${GIT_REMOTE##"$PATTERN"}"
     done
     for PATTERN in "/" ".git"; do
@@ -51,7 +53,7 @@ else
         GIT_REMOTE=$(printf '\\e]8;;%s\\e\\%s\\e]8;;\\e\\' "$GIT_REMOTE_URL" "$GIT_REMOTE")
     fi
 fi
-printf '%s %s' "$GIT_REMOTE_SYMBOL" "$GIT_REMOTE"
+printf '%s%s' "$GIT_REMOTE_SYMBOL" "$GIT_REMOTE"
 """
 when = 'git rev-parse --is-inside-work-tree 2> /dev/null'
 format = "at $output "
