@@ -29,11 +29,10 @@
     type = "file"
     url = "https://raw.githubusercontent.com/arcticicestudio/nord-konsole/develop/src/nord.colorscheme"
     refreshPeriod = "168h"
-{{ else -}}
+{{- else if eq .theme "catppuccin" }}
 [".config/kitty/{{ .theme }}.conf"]
     type = "file"
     refreshPeriod = "168h"
-{{- if eq .theme "catppuccin" }}
     url = "https://raw.githubusercontent.com/catppuccin/kitty/main/catppuccin.conf"
 [".local/share/konsole/{{ .theme }}.colorscheme"]
     type = "file"
@@ -44,6 +43,9 @@
     url = "https://raw.githubusercontent.com/catppuccin/btop/main/catppuccin.theme"
     refreshPeriod = "168h"
 {{- else if eq .theme "dracula" }}
+[".config/kitty/{{ .theme }}.conf"]
+    type = "file"
+    refreshPeriod = "168h"
     url = "https://raw.githubusercontent.com/dracula/kitty/master/dracula.conf"
 [".config/tig/config"]
     type = "file"
@@ -53,5 +55,4 @@
     type = "file"
     url = "https://raw.githubusercontent.com/dracula/konsole/master/Dracula.colorscheme"
     refreshPeriod = "168h"
-{{- end }}
 {{- end }}
