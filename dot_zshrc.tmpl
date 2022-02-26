@@ -2,11 +2,14 @@ if (( $+commands[exa] )) ; then
     alias exa='exa -F'
     alias xl='exa -lh --git --group-directories-first'
     alias lx='exa -lh --git --group-directories-first'
+    alias xtree='exa --icons --color-scale --tree --long --no-permissions --no-user --no-time --git'
 fi
 if (( $+commands[lsd] )) ; then
     alias tree='lsd --total-size --tree --blocks size,name'
     alias lsdu='lsd --total-size --blocks size,name -S'
     alias lsdtree='lsd --total-size --tree --blocks size,name'
+elif (( $+commands[exa] )) ; then
+    alias tree='exa --icons --color-scale --tree --long --no-permissions --no-user --no-time --git'
 else
     alias tree='tree -h --du'
 fi
@@ -278,6 +281,8 @@ zstyle ':fzf-tab:complete:kill:argument-rest' extra-opts --preview=$extract'ps -
 # give a preview of directory by lsd when completing cd
 if (( $+commands[lsd] )) ; then
     zstyle ':fzf-tab:complete:cd:*' extra-opts --preview=$extract'lsd --group-dirs=first --icon=always --color=always $realpath'
+elif (( $+commands[exa] )) ; then
+    zstyle ':fzf-tab:complete:cd:*' extra-opts --preview=$extract'exa --group-directories-first --icons --color=always $realpath'
 fi
 
 # starship, silver, and powerline-go are in the Fedora repos
@@ -290,6 +295,9 @@ if (( $+commands[zoxide] )) ; then
     if (( $+commands[lsd] )) ; then
         alias zi="FZF_DEFAULT_OPTS=\"\$FZF_DEFAULT_OPTS --preview 'lsd --group-dirs=first --icon=always --color=always {2}'\" __zoxide_zi"
         alias zqi="FZF_DEFAULT_OPTS=\"\$FZF_DEFAULT_OPTS --preview 'lsd --group-dirs=first --icon=always --color=always {2}'\" __zoxide_zqi"
+    elif $(( $+commands[exa] )) ; then
+        alias zi="FZF_DEFAULT_OPTS=\"\$FZF_DEFAULT_OPTS --preview 'exa --group-directories-first --icons --color=always {2}'\" __zoxide_zi"
+        alias zqi="FZF_DEFAULT_OPTS=\"\$FZF_DEFAULT_OPTS --preview 'exa --group-directories-first --icons --color=always {2}'\" __zoxide_zqi"
     fi
 fi
 
@@ -342,3 +350,4 @@ fi
 (( $+commands[macchina] )) && macchina
 (( $+commands[fortune] )) && fortune -s | cowsay
 (( $+commands[date] )) && date
+
