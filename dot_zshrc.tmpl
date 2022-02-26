@@ -183,7 +183,11 @@ bindkey '\C-x\C-e' edit-command-line
 bindkey '^ ' autosuggest-execute
 
 if (( $+commands[vivid] )) ; then
+{{- if eq .theme "onedark" }}
+    export LS_COLORS="$(vivid generate one-dark)"
+{{- else }}
     export LS_COLORS="$(vivid generate {{ .theme }})"
+{{- end }}
 fi
 
 # Allow arrow navigation and search in options
