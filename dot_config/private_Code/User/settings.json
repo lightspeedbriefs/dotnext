@@ -1,0 +1,28 @@
+{
+  "editor.fontFamily": "'Cascadia Code PL','JetBrains Mono'",
+  "editor.fontLigatures": true,
+  "editor.semanticTokenColorCustomizations": {
+    "[One Dark Pro]": {
+      "rules": {
+        "parameter": "#D19A66",
+        "property": "#9D527C",
+        "property:python": "#9D527C",
+        "variable.readonly:python": "#D19A66"
+      }
+    }
+  },
+  "editor.suggest.preview": true,
+  "files.autoSave": "afterDelay",
+  "files.trimTrailingWhitespace": true,
+  "redhat.telemetry.enabled": false,
+  "remote.containers.dockerComposePath": "podman-compose",
+  "remote.containers.dockerPath": "podman",
+  "telemetry.telemetryLevel": "off",
+  "terminal.integrated.persistentSessionScrollback": 1000,
+  "terminal.integrated.scrollback": 10000,
+  "testExplorer.useNativeTesting": true,
+  "vim.highlightedyank.enable": true,
+  "window.titleBarStyle": "custom",
+  "workbench.colorTheme": "One Dark Pro",
+  "workbench.preferredDarkColorTheme": "One Dark Pro"
+}

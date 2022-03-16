@@ -13,7 +13,7 @@ elif (( $+commands[exa] )) ; then
 else
     alias tree='tree -h --du'
 fi
-alias ls='ls --color=auto -F'
+alias ls='ls --color=auto -F --hyperlink'
 if (( $+commands[grc] )) ; then
     alias ll='grc -es --colour=auto ls -lhF --color --group-directories-first --hyperlink'
 else
