@@ -68,7 +68,7 @@ if (( $+commands[bat] )) ; then
 fi
 export FZF_ALT_C_OPTS="--exit-0"
 if (( $+commands[lsd] )) ; then
-    export FZF_ALT_C_OPTS="$FZF_ALT_C_OPTS --preview 'lsd --group-dirs=first --icon=always --color=always {}'"
+    export FZF_ALT_C_OPTS="$FZF_ALT_C_OPTS --preview 'lsd --hyperlink=always --group-dirs=first --icon=always --color=always {}'"
 fi
 if (( $+commands[fd] )) ; then
     export FZF_DEFAULT_COMMAND='fd -t f --color=always'
