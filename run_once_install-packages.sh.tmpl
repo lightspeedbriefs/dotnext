@@ -6,7 +6,7 @@ if [[ $EUID -eq 0 ]] ; then
 fi
 
 install_ubuntu_container() {
-    $SUDO apt install -y --no-install-recommends {{ if eq .chezmoi.osRelease.versionID "20.04" }}-o Dpkg::Options::="--force-overwrite"{{ else }}zoxide hstr exa duf{{ end }} neovim fd-find ripgrep fzf htop zsh zsh-syntax-highlighting zsh-autosuggestions bat ncdu kitty-terminfo less curl git tig tree
+    $SUDO apt install -y --no-install-recommends {{ if eq .chezmoi.osRelease.versionID "20.04" }}-o Dpkg::Options::="--force-overwrite"{{ else }}zoxide hstr exa duf{{ end }} neovim fd-find ripgrep fzf htop zsh zsh-syntax-highlighting zsh-autosuggestions bat ncdu kitty-terminfo less curl git tig tree jq unzip
     if ! command -v starship &>/dev/null ; then
         sh -c "FORCE=1 $(curl -fsSL https://starship.rs/install.sh)"
     fi
@@ -27,7 +27,7 @@ install_ubuntu_desktop() {
         exit 0
     fi
     $SUDO apt install -y neovim vim python3-pynvim flatpak zoxide fd-find ripgrep fzf htop zsh zsh-syntax-highlighting zsh-autosuggestions bat grc fonts-jetbrains-mono fonts-cascadia-code systemd-container systemd-coredump mkosi hstr ncdu papirus-icon-theme less kitty pipx fortune-mod cowsay \
-                         figlet qdirstat git curl tig tree exa
+                         figlet qdirstat git curl tig tree exa jq unzip
     flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
     flatpak install -y flathub org.signal.Signal com.spotify.Client org.x.Warpinator com.github.tchx84.Flatseal
     if ! $SUDO systemd-detect-virt -q ; then
@@ -39,7 +39,7 @@ install_ubuntu_desktop() {
 }
 
 install_fedora_container() {
-    $SUDO dnf -y install neovim ripgrep fd-find zoxide lsd procs fzf bat zsh zsh-autosuggestions zsh-syntax-highlighting htop hstr git-delta dua-cli ncdu prettyping langpacks-core-en kitty-terminfo less curl exa tokei cloc gitui git tig ctags tree mold duf wget2
+    $SUDO dnf -y install neovim ripgrep fd-find zoxide lsd procs fzf bat zsh zsh-autosuggestions zsh-syntax-highlighting htop hstr git-delta dua-cli ncdu prettyping langpacks-core-en kitty-terminfo less curl exa tokei cloc gitui git tig ctags tree mold duf wget2 jq unzip
     if command -v python &>/dev/null ; then
         $SUDO dnf -y install python3-neovim
     fi
@@ -64,7 +64,7 @@ install_fedora_desktop() {
     fi
     $SUDO dnf -y install neovim python3-neovim vim-enhanced starship ripgrep fd-find zoxide lsd procs fzf bat zsh zsh-autosuggestions zsh-syntax-highlighting kitty flatpak htop code systemd-networkd systemd-resolved systemd-container mkosi hstr git-delta dua-cli ncdu prettyping grc fortune-mod \
                          cascadia-code-pl-fonts overpass-fonts overpass-mono-fonts ibm-plex-fonts-all jetbrains-mono-fonts rsms-inter-fonts applet-window-buttons papirus-icon-theme mint-x-icons mint-y-icons mint-themes cowsay figlet doge less pipx dolphin-plugins k4dirstat qdirstat kvantum \
-                         python3-dnf-plugin-post-transaction-actions python3-dnf-plugin-tracer tokei cloc exa git gitui tig ctags tree mold duf wget2
+                         python3-dnf-plugin-post-transaction-actions python3-dnf-plugin-tracer tokei cloc exa git gitui tig ctags tree mold duf wget2 jq unzip
     flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
     flatpak install -y flathub org.signal.Signal com.spotify.Client org.x.Warpinator com.github.tchx84.Flatseal
     if ! $SUDO systemd-detect-virt -q ; then
