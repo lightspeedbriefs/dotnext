@@ -304,11 +304,11 @@ fi
 if (( $+commands[zoxide] )) ; then
     eval "$(zoxide init zsh)"
     if (( $+commands[lsd] )) ; then
-        alias zi="FZF_DEFAULT_OPTS=\"\$FZF_DEFAULT_OPTS --preview 'lsd --hyperlink=always --group-dirs=first --icon=always --color=always {2..}'\" __zoxide_zi"
-        alias zqi="FZF_DEFAULT_OPTS=\"\$FZF_DEFAULT_OPTS --preview 'lsd --hyperlink=always --group-dirs=first --icon=always --color=always {2..}'\" __zoxide_zqi"
+        alias zi="_ZO_FZF_OPTS=\"\$FZF_DEFAULT_OPTS --preview 'lsd --hyperlink=always --group-dirs=first --icon=always --color=always {2..}'\" __zoxide_zi"
+        alias zqi="_ZO_FZF_OPTS=\"\$FZF_DEFAULT_OPTS --preview 'lsd --hyperlink=always --group-dirs=first --icon=always --color=always {2..}'\" __zoxide_zqi"
     elif $(( $+commands[exa] )) ; then
-        alias zi="FZF_DEFAULT_OPTS=\"\$FZF_DEFAULT_OPTS --preview 'exa --group-directories-first --icons --color=always {2..}'\" __zoxide_zi"
-        alias zqi="FZF_DEFAULT_OPTS=\"\$FZF_DEFAULT_OPTS --preview 'exa --group-directories-first --icons --color=always {2..}'\" __zoxide_zqi"
+        alias zi="_ZO_FZF_OPTS=\"\$FZF_DEFAULT_OPTS --preview 'exa --group-directories-first --icons --color=always {2..}'\" __zoxide_zi"
+        alias zqi="_ZO_FZF_OPTS=\"\$FZF_DEFAULT_OPTS --preview 'exa --group-directories-first --icons --color=always {2..}'\" __zoxide_zqi"
     fi
 fi
 
