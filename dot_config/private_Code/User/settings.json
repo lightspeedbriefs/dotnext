@@ -1,4 +1,5 @@
 {
+  "dart.devToolsBrowser": "default",
   "editor.fontFamily": "'Cascadia Code PL','JetBrains Mono'",
   "editor.fontLigatures": true,
   "editor.semanticTokenColorCustomizations": {
@@ -14,14 +15,18 @@
   "editor.suggest.preview": true,
   "files.autoSave": "afterDelay",
   "files.trimTrailingWhitespace": true,
+  "git.autofetch": true,
+  "git.mergeEditor": true,
   "redhat.telemetry.enabled": false,
   "remote.containers.dockerComposePath": "podman-compose",
   "remote.containers.dockerPath": "podman",
   "telemetry.telemetryLevel": "off",
   "terminal.integrated.persistentSessionScrollback": 1000,
   "terminal.integrated.scrollback": 10000,
-  "testExplorer.useNativeTesting": true,
+  "terminal.integrated.shellIntegration.enabled": true,
   "vim.highlightedyank.enable": true,
+  "window.commandCenter": true,
+  "window.menuBarVisibility": "compact",
   "window.titleBarStyle": "custom",
   "workbench.colorTheme": "One Dark Pro",
   "workbench.preferredDarkColorTheme": "One Dark Pro"
