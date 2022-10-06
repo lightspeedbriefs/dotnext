@@ -343,7 +343,11 @@ _fzf_comprun() {
 [ -f /usr/share/fzf/shell/key-bindings.zsh ] && source /usr/share/fzf/shell/key-bindings.zsh
 
 [ -f /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh ] && source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-[ -f /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ] && source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# zsh-syntax-highlighting has distro packages available, but they haven't cut a new release in years
+# See: https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/INSTALL.md
+# And: https://github.com/zsh-users/zsh-syntax-highlighting/issues/722
+# [ -f /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ] && source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+[ -f ~/.local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ] && source ~/.local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 if [[ -f ~/.local/share/enhancd/init.sh ]] ; then
     source ~/.local/share/enhancd/init.sh

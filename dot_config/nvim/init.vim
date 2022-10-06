@@ -243,6 +243,8 @@ else
     let g:ale_completion_enabled = 1
 endif
 
+Plug 'alker0/chezmoi.vim'
+
 " }}}
 
 " {{{ Themes
