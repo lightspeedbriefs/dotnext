@@ -1,5 +1,7 @@
 {
   "dart.devToolsBrowser": "default",
+  "dev.containers.dockerComposePath": "podman-compose",
+  "dev.containers.dockerPath": "podman",
   "editor.fontFamily": "'Cascadia Code PL','JetBrains Mono'",
   "editor.fontLigatures": true,
   "editor.semanticTokenColorCustomizations": {
@@ -18,8 +20,6 @@
   "git.autofetch": true,
   "git.mergeEditor": true,
   "redhat.telemetry.enabled": false,
-  "dev.containers.dockerComposePath": "podman-compose",
-  "dev.containers.dockerPath": "podman",
   "telemetry.telemetryLevel": "off",
   "terminal.integrated.persistentSessionScrollback": 1000,
   "terminal.integrated.scrollback": 10000,
@@ -28,6 +28,6 @@
   "window.commandCenter": true,
   "window.menuBarVisibility": "compact",
   "window.titleBarStyle": "custom",
-  "workbench.colorTheme": "One Dark Pro",
+  "workbench.colorTheme": "Catppuccin Frappé",
   "workbench.preferredDarkColorTheme": "One Dark Pro"
 }

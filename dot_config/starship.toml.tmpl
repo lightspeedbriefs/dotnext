@@ -1,4 +1,21 @@
-format = "${custom.distro}$all"
+# Get editor completions based on the config schema
+"$schema" = 'https://starship.rs/config-schema.json'
+
+{{ if eq .theme "catppuccin" -}}
+palette = "catppuccin_{{ .theme_suffix }}"
+{{- end }}
+
+[os]
+disabled = false
+
+# Need to use a space after each symbol, as described here:
+# https://sw.kovidgoyal.net/kitty/faq/#some-special-symbols-are-rendered-small-truncated-in-kitty
+[os.symbols]
+Fedora = " "
+Linux = " "
+openSUSE = " "
+Ubuntu = " "
+Windows = " "
 
 [status]
 disabled = false
@@ -66,24 +83,35 @@ format = "$symbol[$output]($style) "
 symbol = "🔑"
 style = "bold fg:green"
 
-[custom.distro]
-description = "Display symbol for the current Linux distro"
-command = """
-source /etc/os-release
-case "$ID" in
-    fedora)
-        printf ""
-        ;;
-    ubuntu)
-        printf ""
-        ;;
-    opensuse*)
-        printf ""
-        ;;
-    *)
-        printf ""
-        ;;
-esac
-"""
-when = "test -f /etc/os-release"
-style = "bold blue"
+{{ if eq .theme "catppuccin" -}}
+# TODO: find a better way to include the palette definition
+# The documentation specifically states that the pallets should be near the end of the toml file:
+# https://github.com/JoshPaulie/starship/blob/6c75bd416abfeaaec5959514d1afdb81676d443a/README.md?plain=1#L28
+[palettes.catppuccin_frappe]
+rosewater = "#f2d5cf"
+flamingo = "#eebebe"
+pink = "#f4b8e4"
+mauve = "#ca9ee6"
+red = "#e78284"
+maroon = "#ea999c"
+peach = "#ef9f76"
+yellow = "#e5c890"
+green = "#a6d189"
+teal = "#81c8be"
+sky = "#99d1db"
+sapphire = "#85c1dc"
+blue = "#8caaee"
+lavender = "#babbf1"
+text = "#c6d0f5"
+subtext1 = "#b5bfe2"
+subtext0 = "#a5adce"
+overlay2 = "#949cbb"
+overlay1 = "#838ba7"
+overlay0 = "#737994"
+surface2 = "#626880"
+surface1 = "#51576d"
+surface0 = "#414559"
+base = "#303446"
+mantle = "#292c3c"
+crust = "#232634"
+{{- end }}

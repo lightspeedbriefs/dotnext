@@ -21,7 +21,8 @@
 {{- if stdinIsATTY }}
     name = {{ promptString "name" $name | quote }}
     email = {{ promptString "email" $email | quote }}
-    theme = {{ promptString "theme" (or (get . "theme") "nord") | quote }}
+    theme = {{ promptStringOnce . "theme" "nord" "Theme to use" | quote }}
+    theme_suffix = {{ promptStringOnce . "theme_suffix" "Theme variant to use" | quote }}
 {{- else }}
     name = {{ $name | quote }}
     email = {{ $email | quote }}
@@ -29,3 +30,5 @@
 {{- end }}
     vim = "nvim"
     container = {{ $container }}
+[diff]
+    exclude = ["scripts"]

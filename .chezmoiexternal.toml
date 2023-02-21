@@ -37,20 +37,51 @@
     url = "https://raw.githubusercontent.com/arcticicestudio/nord-konsole/develop/src/nord.colorscheme"
     refreshPeriod = "168h"
 {{- else if eq .theme "catppuccin" }}
-[".config/kitty/{{ .theme }}.conf"]
-    type = "file"
+[".config/kitty/themes"]
+    type = "archive"
     refreshPeriod = "168h"
-    url = "https://raw.githubusercontent.com/catppuccin/kitty/main/catppuccin.conf"
-[".local/share/konsole/{{ .theme }}.colorscheme"]
-    type = "file"
-    url = "https://raw.githubusercontent.com/catppuccin/konsole/main/Catppuccin.colorscheme"
+    url = "https://github.com/catppuccin/kitty/archive/main.tar.gz"
+    stripComponents = 2
+    include = ["*/themes/*.conf"]
+[".local/share/konsole"]
+    type = "archive"
     refreshPeriod = "168h"
-[".config/btop/themes/{{ .theme }}.theme"]
-    type = "file"
-    url = "https://raw.githubusercontent.com/catppuccin/btop/main/catppuccin.theme"
+    url = "https://github.com/catppuccin/konsole/archive/main.tar.gz"
+    stripComponents = 1
+    include = ["*/*.colorscheme"]
+[".config/lazygit"]
+    type = "archive"
     refreshPeriod = "168h"
+    url = "https://github.com/catppuccin/lazygit/archive/main.tar.gz"
+    stripComponents = 2
+    include = ["*/themes/*.yml"]
+[".config/gitui"]
+    type = "archive"
+    refreshPeriod = "168h"
+    url = "https://github.com/catppuccin/gitui/archive/master.tar.gz"
+    stripComponents = 2
+    include = ["*/theme/*.ron"]
+[".local/share/catppuccin-zsh-syntax-highlighting"]
+    type = "archive"
+    refreshPeriod = "168h"
+    url = "https://github.com/catppuccin/zsh-syntax-highlighting/archive/main.tar.gz"
+    stripComponents = 2
+    include = ["*/themes/*.zsh"]
+    exact = true
+[".config/starship/themes"]
+    type = "archive"
+    refreshPeriod = "168h"
+    url = "https://github.com/JoshPaulie/starship/archive/main.tar.gz"
+    stripComponents = 2
+    include = ["*/palettes/*.toml"]
+[".config/bat/themes"]
+    type = "archive"
+    refreshPeriod = "168h"
+    url = "https://github.com/catppuccin/bat/archive/main.tar.gz"
+    stripComponents = 1
+    include = ["*/*.tmTheme"]
 {{- else if eq .theme "dracula" }}
-[".config/kitty/{{ .theme }}.conf"]
+[".config/kitty/themes/{{ .theme }}.conf"]
     type = "file"
     refreshPeriod = "168h"
     url = "https://raw.githubusercontent.com/dracula/kitty/master/dracula.conf"

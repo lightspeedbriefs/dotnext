@@ -193,7 +193,7 @@ if (( $+commands[vivid] )) ; then
 {{- if eq .theme "onedark" }}
     export LS_COLORS="$(vivid generate one-dark)"
 {{- else }}
-    export LS_COLORS="$(vivid generate {{ .theme }})"
+    export LS_COLORS="$(vivid generate {{ list .theme (or (get . "theme_suffix") nil) | join "-" }})"
 {{- end }}
 fi
 
