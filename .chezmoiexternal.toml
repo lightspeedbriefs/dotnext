@@ -71,7 +71,7 @@
 [".config/starship/themes"]
     type = "archive"
     refreshPeriod = "168h"
-    url = "https://github.com/JoshPaulie/starship/archive/main.tar.gz"
+    url = "https://github.com/catppuccin/starship/archive/main.tar.gz"
     stripComponents = 2
     include = ["*/palettes/*.toml"]
 [".config/bat/themes"]
