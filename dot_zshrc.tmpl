@@ -342,6 +342,10 @@ _fzf_comprun() {
 [ -f /usr/share/fzf/shell/completion.zsh ] && source /usr/share/fzf/shell/completion.zsh
 [ -f /usr/share/fzf/shell/key-bindings.zsh ] && source /usr/share/fzf/shell/key-bindings.zsh
 
+{{ if eq .theme "catppuccin" -}}
+[ -f ~/.local/share/catppuccin-zsh-syntax-highlighting/catppuccin_{{ .theme_suffix }}-zsh-syntax-highlighting.zsh ] && source ~/.local/share/catppuccin-zsh-syntax-highlighting/catppuccin_{{ .theme_suffix }}-zsh-syntax-highlighting.zsh
+{{- end }}
+
 [ -f /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh ] && source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 # zsh-syntax-highlighting has distro packages available, but they haven't cut a new release in years
 # See: https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/INSTALL.md
