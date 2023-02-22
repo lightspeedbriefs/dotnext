@@ -40,6 +40,9 @@ alias clang="clang $c_opts $clang_opts"
 unset cxx_opts c_opts gxx_opts gnu_opts clang_opts link_flags
 alias ip='ip -color=auto'
 alias lg=lazygit
+{{- if eq .theme "catppuccin" }}
+alias gitui='gitui -t {{ .theme_suffix }}.ron'
+{{- end }}
 alias history='history -f'
 if (( $+commands[rg] )) ; then
     alias rf='rg --files -g'
