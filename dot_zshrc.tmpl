@@ -347,6 +347,8 @@ _fzf_comprun() {
 
 {{ if eq .theme "catppuccin" -}}
 [ -f ~/.local/share/catppuccin-zsh-syntax-highlighting/catppuccin_{{ .theme_suffix }}-zsh-syntax-highlighting.zsh ] && source ~/.local/share/catppuccin-zsh-syntax-highlighting/catppuccin_{{ .theme_suffix }}-zsh-syntax-highlighting.zsh
+{{ else -}}
+[ -f ~/.local/share/{{ .theme }}-zsh-syntax-highlighting.zsh ] && source ~/.local/share/{{ .theme }}-zsh-syntax-highlighting.zsh
 {{- end }}
 
 [ -f /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh ] && source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh

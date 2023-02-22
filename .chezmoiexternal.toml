@@ -93,4 +93,8 @@
     type = "file"
     url = "https://raw.githubusercontent.com/dracula/konsole/master/Dracula.colorscheme"
     refreshPeriod = "168h"
+[".local/share/dracula-zsh-syntax-highlighting.zsh"]
+    type = "file"
+    url = "https://raw.githubusercontent.com/dracula/zsh-syntax-highlighting/master/zsh-syntax-highlighting.sh"
+    refreshPeriod = "168h"
 {{- end }}
