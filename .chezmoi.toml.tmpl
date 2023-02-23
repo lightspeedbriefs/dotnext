@@ -21,7 +21,7 @@
 {{- if stdinIsATTY }}
     name = {{ promptString "name" $name | quote }}
     email = {{ promptString "email" $email | quote }}
-    theme = {{ promptStringOnce . "theme" "nord" "Theme to use" | quote }}
+    theme = {{ promptStringOnce . "theme" "Theme to use" "nord" | quote }}
     theme_suffix = {{ promptStringOnce . "theme_suffix" "Theme variant to use" | quote }}
 {{- else }}
     name = {{ $name | quote }}
