@@ -8,6 +8,7 @@ if (( $+commands[lsd] )) ; then
     alias tree='lsd --hyperlink=always --total-size --tree --blocks size,name'
     alias lsdu='lsd --hyperlink=always --total-size --blocks size,name -S'
     alias lsdtree='lsd --hyperlink=always --total-size --tree --blocks size,name'
+    alias dtree='lsd --hyperlink=always --tree -d --blocks name'
 elif (( $+commands[exa] )) ; then
     alias tree='exa --icons --color-scale --tree --long --no-permissions --no-user --no-time --git'
 else
@@ -82,6 +83,10 @@ elif (( $+commands[grc] )) ; then
 fi
 if (( $+commands[podman] )) ; then
     alias docker=podman
+    alias pm=podman
+fi
+if (( $+commands[podman-tui] )) ; then
+    alias pt=podman-tui
 fi
 alias dmesg='dmesg -H'
 alias gentags='ctags -R --sort=yes --c++-kinds=+p --fields=+iaS --extra=+q --languages=c++'
@@ -369,6 +374,7 @@ forgit_revert_commit=grco
 
 [ -f ~/.local/share/zsh-autoswitch-virtualenv.zsh ] && source ~/.local/share/zsh-autoswitch-virtualenv.zsh
 [ -f ~/.local/share/forgit.zsh ] && source ~/.local/share/forgit.zsh
+[ -f ~/.local/share/zsh-functions.zsh ] && source ~/.local/share/zsh-functions.zsh
 [ -f ~/.local/share/zsh-termsupport.zsh ] && source ~/.local/share/zsh-termsupport.zsh
 
 (( $+commands[doge] )) && doge

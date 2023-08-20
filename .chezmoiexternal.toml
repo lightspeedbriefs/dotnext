@@ -24,6 +24,10 @@
     type = "file"
     url = "https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/lib/termsupport.zsh"
     refreshPeriod = "168h"
+[".local/share/zsh-functions.zsh"]
+    type = "file"
+    url = "https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/lib/functions.zsh"
+    refreshPeriod = "168h"
 [".local/share/zsh-syntax-highlighting"]
     type = "archive"
     url = "https://github.com/zsh-users/zsh-syntax-highlighting/archive/master.tar.gz"

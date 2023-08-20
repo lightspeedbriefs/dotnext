@@ -43,7 +43,17 @@
 [icdiff]
     pager = less
 [delta]
+    hyperlinks = true
+    blame-code-style = syntax
+{{- if eq .theme "catppuccin" }}
+    syntax-theme = Catppuccin-{{ .theme_suffix }}
+{{- else if eq .theme "dracula" }}
+    syntax-theme = Dracula
+{{- else if eq .theme "nord" }}
+    syntax-theme = Nord
+{{- else }}
     syntax-theme = TwoDark
+{{- end }}
 [grep]
     lineNumber = true
     patternType = extended

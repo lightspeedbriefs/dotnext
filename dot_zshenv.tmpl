@@ -39,6 +39,8 @@ export HISTSIZE=40000
 export SAVEHIST=40000
 export HISTTIMEFORMAT="[%Y-%m-%d %H:%M:%S] "
 export HISTCONTROL="ignoredups"
+# Make systemd use our preferred palette
+export SYSTEMD_COLORS=16
 export GCC_COLORS="error=01;31:warning=01;35:note=01;36:range1=32:range2=34:locus=01:\
 quote=01:path=01;36:fixit-insert=32:fixit-delete=31:\
 diff-filename=01:diff-hunk=32:diff-delete=31:diff-insert=32:\
@@ -108,6 +110,8 @@ export SKIM_DEFAULT_COMMAND="$FZF_DEFAULT_COMMAND"
 if [[ -n "$DISPLAY" ]] ; then
     export BROWSER=firefox
 fi
+
+export ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 
 # Less Colors for Man Pages
 export LESS_TERMCAP_mb=$'\E[01;31m' # begin blinking
