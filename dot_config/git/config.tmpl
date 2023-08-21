@@ -1,22 +1,39 @@
+{{- if lookPath "delta" -}}
 [core]
     pager = "{ [ $COLUMNS -lt 160 ] && delta || delta --side-by-side -w ${FZF_PREVIEW_COLUMNS:-$COLUMNS}; }"
 [interactive]
     diffFilter = delta --color-only
+[delta]
+{{- if lookPath "code" }}
+    hyperlinks-file-link-format = "vscode://file/{path}:{line}"
+{{- end }}
+    blame-code-style = syntax
+{{- if eq .theme "catppuccin" }}
+    syntax-theme = Catppuccin-{{ .theme_suffix }}
+{{- else if eq .theme "dracula" }}
+    syntax-theme = Dracula
+{{- else if eq .theme "nord" }}
+    syntax-theme = Nord
+{{- else }}
+    syntax-theme = TwoDark
+{{- end }}
+    hyperlinks = true
+{{- end }}
 [credential]
     helper = cache --timeout=3600
 [diff]
-{{- if not .container }}
+    algorithm = histogram
+{{- if and (not .container) (lookPath "kitty") }}
     tool = kitty
     guitool = kitty.gui
-{{- end }}
-    algorithm = histogram
-[difftool]
-    prompt = false
-    trustExitCode = true
 [difftool "kitty"]
     cmd = kitty +kitten diff $LOCAL $REMOTE
 [difftool "kitty.gui"]
     cmd = kitty kitty +kitten diff $LOCAL $REMOTE
+{{- end }}
+[difftool]
+    prompt = false
+    trustExitCode = true
 [difftool "vimdiff"]
     path = {{ .vim }}
 [alias]
@@ -42,18 +59,6 @@
     updateRefs = true
 [icdiff]
     pager = less
-[delta]
-    hyperlinks = true
-    blame-code-style = syntax
-{{- if eq .theme "catppuccin" }}
-    syntax-theme = Catppuccin-{{ .theme_suffix }}
-{{- else if eq .theme "dracula" }}
-    syntax-theme = Dracula
-{{- else if eq .theme "nord" }}
-    syntax-theme = Nord
-{{- else }}
-    syntax-theme = TwoDark
-{{- end }}
 [grep]
     lineNumber = true
     patternType = extended
