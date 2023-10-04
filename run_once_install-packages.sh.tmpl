@@ -72,8 +72,8 @@ install_fedora_desktop() {
     flatpak install -y flathub org.signal.Signal com.spotify.Client org.x.Warpinator com.github.tchx84.Flatseal
     if ! $SUDO systemd-detect-virt -q ; then
         $SUDO dnf -y group install --with-optional virtualization
-        $SUDO dnf -y install steam-devices
-        flatpak install -y flathub com.valvesoftware.Steam org.openrgb.OpenRGB
+        $SUDO dnf -y install steam-devices openrgb openrgb-udev-rules
+        flatpak install -y flathub com.valvesoftware.Steam
         echo 'compress="zstd"' | $SUDO tee /etc/dracut.conf.d/compress.conf
     fi
     nvim -es -u ~/.config/nvim/init.vim -i NONE -c "PlugInstall" -c "qa"
