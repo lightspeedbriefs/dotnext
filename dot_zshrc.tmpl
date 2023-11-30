@@ -1,8 +1,8 @@
 if (( $+commands[eza] )) ; then
-    alias eza='eza -F'
-    alias xl='eza -lh --git --group-directories-first'
-    alias lx='eza -lh --git --group-directories-first'
-    alias xtree='eza --icons --color-scale --tree --long --no-permissions --no-user --no-time --git'
+    alias eza='eza -F --hyperlink'
+    alias xl='eza -lh --git --group-directories-first --hyperlink'
+    alias lx='eza -lh --git --group-directories-first --hyperlink'
+    alias xtree='eza --icons --color-scale --tree --long --no-permissions --no-user --no-time --git --hyperlink'
 fi
 if (( $+commands[lsd] )) ; then
     alias tree='lsd --hyperlink=always --total-size --tree --blocks size,name'
@@ -10,7 +10,7 @@ if (( $+commands[lsd] )) ; then
     alias lsdtree='lsd --hyperlink=always --total-size --tree --blocks size,name'
     alias dtree='lsd --hyperlink=always --tree -d --blocks name'
 elif (( $+commands[eza] )) ; then
-    alias tree='eza --icons --color-scale --tree --long --no-permissions --no-user --no-time --git'
+    alias tree='eza --icons --color-scale --tree --long --no-permissions --no-user --no-time --git --hyperlink'
 else
     alias tree='tree -h --du'
 fi
@@ -301,7 +301,7 @@ zstyle ':fzf-tab:complete:kill:argument-rest' extra-opts --preview=$extract'ps -
 if (( $+commands[lsd] )) ; then
     zstyle ':fzf-tab:complete:cd:*' extra-opts --preview=$extract'lsd --hyperlink=always --group-dirs=first --icon=always --color=always $realpath'
 elif (( $+commands[eza] )) ; then
-    zstyle ':fzf-tab:complete:cd:*' extra-opts --preview=$extract'eza --group-directories-first --icons --color=always $realpath'
+    zstyle ':fzf-tab:complete:cd:*' extra-opts --preview=$extract'eza --group-directories-first --icons --color=always --hyperlink $realpath'
 fi
 
 # starship, silver, and powerline-go are in the Fedora repos
@@ -315,8 +315,8 @@ if (( $+commands[zoxide] )) ; then
         alias zi="_ZO_FZF_OPTS=\"\$FZF_DEFAULT_OPTS --preview 'lsd --hyperlink=always --group-dirs=first --icon=always --color=always {2..}'\" __zoxide_zi"
         alias zqi="_ZO_FZF_OPTS=\"\$FZF_DEFAULT_OPTS --preview 'lsd --hyperlink=always --group-dirs=first --icon=always --color=always {2..}'\" __zoxide_zqi"
     elif $(( $+commands[eza] )) ; then
-        alias zi="_ZO_FZF_OPTS=\"\$FZF_DEFAULT_OPTS --preview 'eza --group-directories-first --icons --color=always {2..}'\" __zoxide_zi"
-        alias zqi="_ZO_FZF_OPTS=\"\$FZF_DEFAULT_OPTS --preview 'eza --group-directories-first --icons --color=always {2..}'\" __zoxide_zqi"
+        alias zi="_ZO_FZF_OPTS=\"\$FZF_DEFAULT_OPTS --preview 'eza --group-directories-first --icons --color=always --hyperlink {2..}'\" __zoxide_zi"
+        alias zqi="_ZO_FZF_OPTS=\"\$FZF_DEFAULT_OPTS --preview 'eza --group-directories-first --icons --color=always --hyperlink {2..}'\" __zoxide_zqi"
     fi
 fi
 
