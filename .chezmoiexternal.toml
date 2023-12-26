@@ -102,3 +102,8 @@
     url = "https://raw.githubusercontent.com/dracula/zsh-syntax-highlighting/master/zsh-syntax-highlighting.sh"
     refreshPeriod = "168h"
 {{- end }}
+[".local/share/fonts/NerdFontsSymbolsOnly"]
+    type = "archive"
+    refreshPeriod = "168h"
+    url = "https://github.com/ryanoasis/nerd-fonts/releases/latest/download/NerdFontsSymbolsOnly.tar.xz"
+    include = ["*.ttf"]
