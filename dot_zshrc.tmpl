@@ -5,6 +5,7 @@ if (( $+commands[eza] )) ; then
     alias xtree='eza --icons --color-scale --tree --long --no-permissions --no-user --no-time --git --hyperlink'
 fi
 if (( $+commands[lsd] )) ; then
+    alias lsd='lsd --hyperlink=auto'
     alias tree='lsd --hyperlink=always --total-size --tree --blocks size,name'
     alias lsdu='lsd --hyperlink=always --total-size --blocks size,name -S'
     alias lsdtree='lsd --hyperlink=always --total-size --tree --blocks size,name'

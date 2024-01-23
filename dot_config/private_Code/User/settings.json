@@ -20,6 +20,7 @@
   "git.autofetch": true,
   "git.mergeEditor": true,
   "redhat.telemetry.enabled": false,
+  "security.promptForLocalFileProtocolHandling": false,
   "telemetry.telemetryLevel": "off",
   "terminal.integrated.allowChords": false,
   "terminal.integrated.confirmOnExit": "hasChildProcesses",
