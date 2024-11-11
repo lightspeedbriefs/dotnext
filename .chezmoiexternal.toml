@@ -82,8 +82,8 @@
     type = "archive"
     refreshPeriod = "168h"
     url = "https://github.com/catppuccin/bat/archive/main.tar.gz"
-    stripComponents = 1
-    include = ["*/*.tmTheme"]
+    stripComponents = 2
+    include = ["**/*.tmTheme"]
 {{- else if eq .theme "dracula" }}
 [".config/kitty/themes/{{ .theme }}.conf"]
     type = "file"
@@ -107,3 +107,9 @@
     refreshPeriod = "168h"
     url = "https://github.com/ryanoasis/nerd-fonts/releases/latest/download/NerdFontsSymbolsOnly.tar.xz"
     include = ["*.ttf"]
+[".local/share/fonts/Monaspace"]
+    type = "archive"
+    refreshPeriod = "168h"
+    url = "https://github.com/githubnext/monaspace/releases/latest/download/monaspace-{{ (gitHubLatestRelease "githubnext/monaspace").TagName }}.zip"
+    stripComponents = 3
+    include = ["**/*.otf"]

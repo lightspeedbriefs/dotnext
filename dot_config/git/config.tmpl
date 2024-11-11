@@ -9,7 +9,7 @@
 {{- end }}
     blame-code-style = syntax
 {{- if eq .theme "catppuccin" }}
-    syntax-theme = Catppuccin-{{ .theme_suffix }}
+    syntax-theme = Catppuccin {{ title .theme_suffix }}
 {{- else if eq .theme "dracula" }}
     syntax-theme = Dracula
 {{- else if eq .theme "nord" }}
