@@ -112,4 +112,4 @@
     refreshPeriod = "168h"
     url = "https://github.com/githubnext/monaspace/releases/latest/download/monaspace-{{ (gitHubLatestRelease "githubnext/monaspace").TagName }}.zip"
     stripComponents = 3
-    include = ["**/*.otf"]
+    include = ["**/*.otf","**/*.ttf"]
