@@ -56,10 +56,11 @@ elif (( $+commands[ag] )) ; then
     alias cgrep='ag --cpp'
 fi
 if (( $+commands[fd] )) ; then
+    alias fd='fd --hyperlink'
     alias findf='fd -t f'
     alias findd='fd -t d'
 elif (( $+commands[fdfind] )) ; then
-    alias fd=fdfind
+    alias fd='fdfind --hyperlink'
 else
     alias findf='find . -type f -name'
     alias findd='find . -type d -name'
