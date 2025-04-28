@@ -394,7 +394,6 @@ noremap <silent> <F4> :FSHere<CR>
 noremap <silent> <F5> :ALEToggle<CR>
 noremap <silent> <F6> :NERDTreeToggle<CR>
 noremap <silent> <F7> :UndotreeToggle<CR>
-set pastetoggle=<F8>
 noremap <silent> <F9> :CtrlSFToggle<CR>
 noremap <silent> <F11> :TagbarToggle<CR>
 noremap <silent> <F12> :GundoToggle<CR>
