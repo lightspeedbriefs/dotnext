@@ -615,7 +615,7 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
-let g:syntastic_cpp_compiler_options = ' -std=c++17 -Wall -Wextra'
+let g:syntastic_cpp_compiler_options = ' -std=c++20 -Wall -Wextra'
 
 " gitgutter config
 " Use fontawesome icons as signs
@@ -692,7 +692,7 @@ let g:airline#extensions#ycm#enabled = 1
 let g:airline_powerline_fonts = 1
 
 " neomake config
-let g:neomake_cpp_clang_args = ["-std=c++17", "-Wall", "-Wextra"]
+let g:neomake_cpp_clang_args = ["-std=c++20", "-Wall", "-Wextra"]
 
 " vim-matchup config
 let g:matchup_matchparen_offscreen = {'method': 'popup'}
@@ -719,7 +719,7 @@ let g:ale_linters = {
 if executable('g++')
     let g:ale_cpp_cc_executable = 'g++'
 endif
-let g:ale_cpp_cc_options = '-std=c++17 -Wall -Wextra'
+let g:ale_cpp_cc_options = '-std=c++20 -Wall -Wextra'
 
 " ctrlp config
 let g:ctrlp_user_command = ['.git', 'git ls-files %s', executable('fd') ? 'fd -t f . %s' : (executable('rg') ? 'rg --files %s' : 'find %s -type f')]
