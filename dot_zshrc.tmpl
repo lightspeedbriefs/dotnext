@@ -60,7 +60,11 @@ if (( $+commands[fd] )) ; then
     alias findf='fd -t f'
     alias findd='fd -t d'
 elif (( $+commands[fdfind] )) ; then
-    alias fd='fdfind --hyperlink'
+    if ! systemd-analyze compare-versions $(fdfind -V |cut -f2 -d' ') lt 10.2 ; then
+        alias fd='fdfind --hyperlink'
+    else
+        alias fd='fdfind'
+    fi
 else
     alias findf='find . -type f -name'
     alias findd='find . -type d -name'

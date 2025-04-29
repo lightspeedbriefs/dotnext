@@ -115,3 +115,10 @@
     stripComponents = 3
     include = ["**/*.otf","**/*.ttf"]
 {{- end }}
+{{ if eq .chezmoi.osRelease.id "ubuntu" }}
+[".local/share/fonts/FontAwesome"]
+    type = "archive"
+    url = "https://use.fontawesome.com/releases/v6.7.2/fontawesome-free-6.7.2-desktop.zip"
+    stripComponents = 2
+    include = ["**/*.otf"]
+{{- end }}
