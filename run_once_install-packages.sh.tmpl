@@ -28,6 +28,7 @@ install_ubuntu_desktop() {
         install_ubuntu_container
         exit 0
     fi
+    $SUDO snap install --classic code
     # starship is only available in the Ubuntu apt repositories starting with 25.04
     sh -c "FORCE=1 $(curl -fsSL https://starship.rs/install.sh)"
     $SUDO apt install -y neovim vim python3-pynvim flatpak zoxide fd-find ripgrep fzf htop zsh zsh-autosuggestions bat grc fonts-jetbrains-mono fonts-cascadia-code systemd-container \
