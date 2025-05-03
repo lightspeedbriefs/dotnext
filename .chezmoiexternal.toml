@@ -84,6 +84,10 @@
     url = "https://github.com/catppuccin/bat/archive/main.tar.gz"
     stripComponents = 2
     include = ["**/*.tmTheme"]
+[".config/delta/themes/catppuccin.gitconfig"]
+    type = "file"
+    url = "https://raw.githubusercontent.com/catppuccin/delta/main/catppuccin.gitconfig"
+    refreshPeriod = "168h"
 {{- else if eq .theme "dracula" }}
 [".config/kitty/themes/{{ .theme }}.conf"]
     type = "file"

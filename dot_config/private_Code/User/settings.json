@@ -20,6 +20,7 @@
   "files.trimTrailingWhitespace": true,
   "git.autofetch": true,
   "git.mergeEditor": true,
+  "gitlens.blame.ignoreWhitespace": true,
   "redhat.telemetry.enabled": false,
   "security.promptForLocalFileProtocolHandling": false,
   "telemetry.telemetryLevel": "off",

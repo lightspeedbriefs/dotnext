@@ -3,6 +3,8 @@
     pager = "{ [ $COLUMNS -lt 160 ] && delta || delta --side-by-side -w ${FZF_PREVIEW_COLUMNS:-$COLUMNS}; }"
 [interactive]
     diffFilter = delta --color-only
+[include]
+    path = ~/.config/delta/themes/catppuccin.gitconfig
 [delta]
 {{- if lookPath "code" }}
     hyperlinks-file-link-format = "vscode://file/{path}:{line}"
@@ -53,6 +55,7 @@
     rba = rebase --abort
     cp = cherry-pick
     rg = grep -p --heading --break
+    fpush = push --force-with-lease
 [rebase]
     autosquash = true
     autoStash = true
