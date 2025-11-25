@@ -2,8 +2,8 @@
   "dart.devToolsBrowser": "default",
   "dev.containers.dockerComposePath": "podman-compose",
   "dev.containers.dockerPath": "podman",
-  "editor.fontFamily": "'Cascadia Code PL','JetBrains Mono'",
-  "editor.fontLigatures": true,
+  "editor.fontFamily": "'Monaspace Neon','Cascadia Code PL','JetBrains Mono'",
+  "editor.fontLigatures": "'calt', 'ss01', 'ss02', 'ss03', 'ss06', 'ss09', 'liga'",
   "editor.semanticTokenColorCustomizations": {
     "[One Dark Pro]": {
       "rules": {
@@ -28,11 +28,20 @@
   "terminal.integrated.allowChords": false,
   "terminal.integrated.confirmOnExit": "hasChildProcesses",
   "terminal.integrated.confirmOnKill": "always",
+  "terminal.integrated.fontLigatures.enabled": true,
   "terminal.integrated.persistentSessionScrollback": 1000,
   "terminal.integrated.scrollback": 10000,
   "terminal.integrated.shellIntegration.enabled": true,
   "textmarker.enableTelemetry": false,
+  "vim.easymotion": true,
+  "vim.handleKeys": {
+      "<C-p>": false,
+      "<C-d>": true,
+      "<C-s>": false,
+      "<C-z>": false
+  },
   "vim.highlightedyank.enable": true,
+  "vim.sneak": true,
   "window.commandCenter": true,
   "window.menuBarVisibility": "compact",
   "window.titleBarStyle": "custom",

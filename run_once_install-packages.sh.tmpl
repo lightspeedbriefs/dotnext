@@ -62,7 +62,7 @@ install_fedora_container() {
 
 install_fedora_desktop() {
     command -v brew &>/dev/null || NONINTERACTIVE=1 bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-    brew install --quiet lazygit macchina lefthook starship vivid bottom spicetify-cli ncdu git-town git-spice fd rustscan jnv # Others that are sometimes more up-to-date with no deps in homebrew: dua-cli zoxide git-delta lsd gitui procs
+    brew install --quiet lazygit macchina lefthook starship vivid bottom spicetify-cli ncdu git-town git-spice fd rustscan jnv jujutsu # Others that are sometimes more up-to-date with no deps in homebrew: dua-cli zoxide git-delta lsd gitui procs
     # Weak attempt to detect we are headless
     source /etc/os-release
     if [[ "$VARIANT_ID" == "server" ]] ; then
