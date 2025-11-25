@@ -2,7 +2,7 @@
   "dart.devToolsBrowser": "default",
   "dev.containers.dockerComposePath": "podman-compose",
   "dev.containers.dockerPath": "podman",
-  "editor.fontFamily": "'Monaspace Neon NF','Cascadia Code PL','JetBrains Mono'",
+  "editor.fontFamily": "'Monaspace Neon NF','Cascadia Code PL','JetBrains Mono','Font Awesome 6 Brands'",
   "editor.fontLigatures": "'calt', 'ss01', 'ss02', 'ss03', 'ss06', 'ss09', 'liga'",
   "editor.semanticTokenColorCustomizations": {
     "[One Dark Pro]": {
