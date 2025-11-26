@@ -1,0 +1,4 @@
+Diagnostics:
+  ClangTidy:
+    Add: [misc*, modernize*, bugprone*, performance*, readability*]
+    Remove: modernize-use-trailing-return-type
