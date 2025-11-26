@@ -17,6 +17,14 @@
   "editor.stickyScroll.enabled": true,
   "editor.stickyScroll.defaultModel": "foldingProviderModel",
   "editor.suggest.preview": true,
+  "errorLens.codeLensEnabled": true,
+  "errorLens.enabledDiagnosticLevels": [
+    "error",
+    "warning",
+    "info",
+    "hint"
+  ],
+  "errorLens.gutterIconsEnabled": true,
   "files.autoSave": "afterDelay",
   "files.trimTrailingWhitespace": true,
   "git.autofetch": true,
