@@ -3,8 +3,10 @@
     pager = "{ [ $COLUMNS -lt 160 ] && delta || delta --side-by-side -w ${FZF_PREVIEW_COLUMNS:-$COLUMNS}; }"
 [interactive]
     diffFilter = delta --color-only
+{{- if eq .theme "catppuccin" }}
 [include]
     path = ~/.config/delta/themes/catppuccin.gitconfig
+{{- end }}
 [delta]
 {{- if lookPath "code" }}
     hyperlinks-file-link-format = "vscode://file/{path}:{line}"

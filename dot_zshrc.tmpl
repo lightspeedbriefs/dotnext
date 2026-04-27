@@ -322,18 +322,18 @@ if (( $+commands[zoxide] )) ; then
     if (( $+commands[lsd] )) ; then
         alias zi="_ZO_FZF_OPTS=\"\$FZF_DEFAULT_OPTS --preview 'lsd --hyperlink=always --group-dirs=first --icon=always --color=always {2..}'\" __zoxide_zi"
         alias zqi="_ZO_FZF_OPTS=\"\$FZF_DEFAULT_OPTS --preview 'lsd --hyperlink=always --group-dirs=first --icon=always --color=always {2..}'\" __zoxide_zqi"
-    elif $(( $+commands[eza] )) ; then
+    elif (( $+commands[eza] )) ; then
         alias zi="_ZO_FZF_OPTS=\"\$FZF_DEFAULT_OPTS --preview 'eza --group-directories-first --icons --color=always --hyperlink {2..}'\" __zoxide_zi"
         alias zqi="_ZO_FZF_OPTS=\"\$FZF_DEFAULT_OPTS --preview 'eza --group-directories-first --icons --color=always --hyperlink {2..}'\" __zoxide_zqi"
     fi
 fi
 
 _fzf_compgen_path() {
-  fd --hidden --follow --exclude ".git" . "$1"
+  ${commands[fd]:-${commands[fdfind]:-fd}} --hidden --follow --exclude ".git" . "$1"
 }
 
 _fzf_compgen_dir() {
-  fd --type d --hidden --no-ignore-vcs --follow --exclude ".git" . "$1"
+  ${commands[fd]:-${commands[fdfind]:-fd}} --type d --hidden --no-ignore-vcs --follow --exclude ".git" . "$1"
 }
 
 _fzf_comprun() {

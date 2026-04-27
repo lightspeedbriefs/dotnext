@@ -15,7 +15,6 @@ elif [[ -x /home/linuxbrew/.linuxbrew/bin/brew ]] ; then
     eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
 fi
 unset binpaths
-export PYTHONPATH=/usr/lib64/python2.7/site-packages/lldb
 export CCACHE_PATH=/usr/bin
 export LESS='-JFXRs'
 export PAGER=less
@@ -37,8 +36,6 @@ export HISTFILE=~/.zsh_history
 export HISTFILESIZE=40000
 export HISTSIZE=40000
 export SAVEHIST=40000
-export HISTTIMEFORMAT="[%Y-%m-%d %H:%M:%S] "
-export HISTCONTROL="ignoredups"
 # Make systemd use our preferred palette
 export SYSTEMD_COLORS=16
 export GCC_COLORS="error=01;31:warning=01;35:note=01;36:range1=32:range2=34:locus=01:\
