@@ -33,8 +33,8 @@ gnu_opts='-ggdb3 -D_GLIBCXX_ASSERTIONS -Wshadow=compatible-local'
 clang_opts='-glldb -Wimplicit-fallthrough -D_LIBCPP_DEBUG=1'
 link_flags='-Wl,--as-needed -Wl,--no-undefined -Wl,--warn-common'
 gxx_opts='-Wsuggest-override -Wsuggest-final-types -Wsuggest-final-methods -Wnull-dereference -Wnrvo'
-cxx_opts="-std=c++20 -pipe -pthread -fvisibility=hidden -fno-omit-frame-pointer -Og -gz -Wall -Wextra -Wdisabled-optimization -Wconversion -Wsign-conversion $link_flags"
-c_opts="-std=c17 -pipe -pthread -fvisibility=hidden -fno-exceptions -fno-unwind-tables -fno-asynchronous-unwind-tables -Og -gz -Wall -Wextra -D_GNU_SOURCE $link_flags"
+cxx_opts="-std=c++23 -pipe -pthread -fvisibility=hidden -fno-omit-frame-pointer -Og -gz -Wall -Wextra -Wdisabled-optimization -Wconversion -Wsign-conversion $link_flags"
+c_opts="-std=c23 -pipe -pthread -fvisibility=hidden -fno-exceptions -fno-unwind-tables -fno-asynchronous-unwind-tables -Og -gz -Wall -Wextra -D_GNU_SOURCE $link_flags"
 alias g++="g++ -Wlogical-op $cxx_opts $gxx_opts $gnu_opts"
 alias gcc="gcc $c_opts $gnu_opts"
 alias clang++="clang++ -Woverloaded-virtual -Wnon-virtual-dtor $cxx_opts $clang_opts"
