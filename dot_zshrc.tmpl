@@ -385,6 +385,12 @@ forgit_revert_commit=grco
 [ -f ~/.local/share/zsh-functions.zsh ] && source ~/.local/share/zsh-functions.zsh
 [ -f ~/.local/share/zsh-termsupport.zsh ] && source ~/.local/share/zsh-termsupport.zsh
 
+# Atuin binds Ctrl-R and Up-Arrow, so it must come after fzf's key-bindings
+# and the up-line-or-beginning-search bindings above to override them.
+if (( $+commands[atuin] )) ; then
+    eval "$(atuin init zsh)"
+fi
+
 (( $+commands[doge] )) && doge
 (( $+commands[linux_logo] )) && linux_logo -u -a
 (( $+commands[macchina] )) && macchina
