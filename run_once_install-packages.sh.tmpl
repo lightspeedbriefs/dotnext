@@ -32,7 +32,7 @@ install_ubuntu_desktop() {
     # starship is only available in the Ubuntu apt repositories starting with 25.04
     sh -c "FORCE=1 $(curl -fsSL https://starship.rs/install.sh)"
     $SUDO apt install -y neovim vim python3-pynvim flatpak zoxide fd-find ripgrep fzf htop zsh zsh-autosuggestions bat grc fonts-jetbrains-mono fonts-cascadia-code systemd-container \
-                         systemd-coredump mkosi hstr ncdu papirus-icon-theme less kitty pipx fortune-mod cowsay figlet qdirstat git git-absorb curl tig tree eza jq unzip duf mold wget2 \
+                         systemd-coredump mkosi hstr ncdu papirus-icon-theme less kitty fortune-mod cowsay figlet qdirstat git git-absorb curl tig tree eza jq unzip duf mold wget2 \
                          cloc lsd git-delta vivid rustup python-is-python3
     curl -LsSf https://astral.sh/uv/install.sh | sh
     flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
@@ -43,8 +43,9 @@ install_ubuntu_desktop() {
     fi
     nvim -es -u ~/.config/nvim/init.vim -i NONE -c "PlugInstall" -c "qa"
     # TODO chsh (use systemd-homed)
-    pipx install konsave fastcov # see also: konfsave
-    # TODO pipx install gdbgui ( after this ticket is resolved: https://github.com/cs01/gdbgui/issues/447 )
+    uv tool install konsave # see also: konfsave
+    uv tool install fastcov
+    uv tool install gdbgui
 }
 
 install_fedora_container() {
@@ -63,6 +64,7 @@ install_fedora_container() {
 install_fedora_desktop() {
     command -v brew &>/dev/null || NONINTERACTIVE=1 bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
     brew install --quiet lazygit macchina lefthook starship vivid bottom spicetify-cli ncdu git-town git-spice fd rustscan jnv jujutsu # Others that are sometimes more up-to-date with no deps in homebrew: dua-cli zoxide git-delta lsd gitui procs
+    brew install --quiet wild-linker/wild/wild
     # Weak attempt to detect we are headless
     source /etc/os-release
     if [[ "$VARIANT_ID" == "server" ]] ; then
@@ -78,7 +80,7 @@ install_fedora_desktop() {
     $SUDO dnf -y install neovim python3-neovim vim-enhanced ripgrep fd-find zoxide lsd procs fzf bat zsh zsh-autosuggestions kitty flatpak htop code systemd-networkd \
                          systemd-resolved systemd-container mkosi hstr git-delta dua-cli ncdu prettyping grc fortune-mod cascadia-code-pl-fonts overpass-fonts \
                          overpass-mono-fonts ibm-plex-fonts-all jetbrains-mono-fonts rsms-inter-fonts papirus-icon-theme mint-x-icons mint-y-icons mint-themes cowsay \
-                         figlet doge less pipx dolphin-plugins k4dirstat qdirstat kvantum python3-dnf-plugin-post-transaction-actions python3-dnf-plugin-tracer tokei \
+                         figlet doge less dolphin-plugins k4dirstat qdirstat kvantum python3-dnf-plugin-post-transaction-actions python3-dnf-plugin-tracer tokei \
                          cloc eza git gitui tig ctags tree mold duf wget2 jq unzip playerctl applet-window-buttons below lld git-absorb plasma-wallpapers-dynamic \
                          intel-one-mono-fonts uv rustup incus fontawesome-6-brands-fonts
     $SUDO update-alternatives --set ld /usr/bin/ld.mold
@@ -92,8 +94,9 @@ install_fedora_desktop() {
     fi
     nvim -es -u ~/.config/nvim/init.vim -i NONE -c "PlugInstall" -c "qa"
     # TODO chsh (use systemd-homed)
-    pipx install konsave fastcov # see also: konfsave
-    # TODO pipx install gdbgui ( after this ticket is resolved: https://github.com/cs01/gdbgui/issues/447 )
+    uv tool install konsave # see also: konfsave
+    uv tool install fastcov
+    uv tool install gdbgui
 }
 
 install_{{ .chezmoi.osRelease.id }}_{{ ternary "container" "desktop" .container }}
