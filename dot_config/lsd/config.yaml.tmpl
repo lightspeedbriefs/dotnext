@@ -1,0 +1,7 @@
+color:
+{{- if or (eq .theme "catppuccin") (eq .theme "dracula") }}
+  # colors.yaml is fetched from the theme's lsd port by .chezmoiexternal.toml
+  theme: custom
+{{- else }}
+  theme: default
+{{- end }}

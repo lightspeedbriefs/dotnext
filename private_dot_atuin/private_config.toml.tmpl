@@ -1,0 +1,6 @@
+enter_accept = true
+{{ if eq .theme "catppuccin" }}
+# The theme file is fetched into ~/.atuin/themes/ by .chezmoiexternal.toml
+[theme]
+name = "catppuccin-{{ .theme_suffix }}-blue"
+{{- end }}

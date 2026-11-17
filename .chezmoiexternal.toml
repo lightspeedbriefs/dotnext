@@ -88,6 +88,22 @@
     type = "file"
     url = "https://raw.githubusercontent.com/catppuccin/delta/main/catppuccin.gitconfig"
     refreshPeriod = "168h"
+[".config/lsd/colors.yaml"]
+    type = "file"
+    url = "https://raw.githubusercontent.com/catppuccin/lsd/main/themes/catppuccin-{{ .theme_suffix }}/colors.yaml"
+    refreshPeriod = "168h"
+[".config/btop/themes/catppuccin_{{ .theme_suffix }}.theme"]
+    type = "file"
+    url = "https://raw.githubusercontent.com/catppuccin/btop/main/themes/catppuccin_{{ .theme_suffix }}.theme"
+    refreshPeriod = "168h"
+[".config/eza/theme.yml"]
+    type = "file"
+    url = "https://raw.githubusercontent.com/catppuccin/eza/main/themes/{{ .theme_suffix }}/catppuccin-{{ .theme_suffix }}-blue.yml"
+    refreshPeriod = "168h"
+[".atuin/themes/catppuccin-{{ .theme_suffix }}-blue.toml"]
+    type = "file"
+    url = "https://raw.githubusercontent.com/catppuccin/atuin/main/themes/{{ .theme_suffix }}/catppuccin-{{ .theme_suffix }}-blue.toml"
+    refreshPeriod = "168h"
 {{- else if eq .theme "dracula" }}
 [".config/kitty/themes/{{ .theme }}.conf"]
     type = "file"
@@ -104,6 +120,14 @@
 [".local/share/dracula-zsh-syntax-highlighting.zsh"]
     type = "file"
     url = "https://raw.githubusercontent.com/dracula/zsh-syntax-highlighting/master/zsh-syntax-highlighting.sh"
+    refreshPeriod = "168h"
+[".config/lsd/colors.yaml"]
+    type = "file"
+    url = "https://raw.githubusercontent.com/dracula/lsd/main/colors.yaml"
+    refreshPeriod = "168h"
+[".config/eza/theme.yml"]
+    type = "file"
+    url = "https://raw.githubusercontent.com/eza-community/eza-themes/main/themes/dracula.yml"
     refreshPeriod = "168h"
 {{- end }}
 {{ if not .container }}
