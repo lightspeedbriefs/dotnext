@@ -1,10 +1,42 @@
+{{- $theme := "One Dark Pro" -}}
+{{- if eq .theme "catppuccin" -}}
+{{-   $theme = get (dict "latte" "Catppuccin Latte" "frappe" "Catppuccin Frappé" "macchiato" "Catppuccin Macchiato" "mocha" "Catppuccin Mocha") .theme_suffix -}}
+{{- else if eq .theme "dracula" -}}
+{{-   $theme = "Dracula Theme" -}}
+{{- else if eq .theme "nord" -}}
+{{-   $theme = "Nord" -}}
+{{- else if eq .theme "onedark" -}}
+{{-   $theme = "One Dark Pro" -}}
+{{- end -}}
 {
+  "cmake.generator": "Ninja",
   "dart.devToolsBrowser": "default",
   "dev.containers.dockerComposePath": "podman-compose",
   "dev.containers.dockerPath": "podman",
+  "dotfiles.repository": "lightspeedbriefs/dotnext",
   "editor.fontFamily": "'Monaspace Neon NF','Cascadia Code PL','JetBrains Mono','Font Awesome 6 Brands'",
   "editor.fontLigatures": "'calt', 'ss01', 'ss02', 'ss03', 'ss06', 'ss09', 'liga'",
   "editor.semanticTokenColorCustomizations": {
+    "[Catppuccin Frappé]": {
+      "rules": {
+        "property": "#babbf1"
+      }
+    },
+    "[Catppuccin Latte]": {
+      "rules": {
+        "property": "#7287fd"
+      }
+    },
+    "[Catppuccin Macchiato]": {
+      "rules": {
+        "property": "#b7bdf8"
+      }
+    },
+    "[Catppuccin Mocha]": {
+      "rules": {
+        "property": "#b4befe"
+      }
+    },
     "[One Dark Pro]": {
       "rules": {
         "parameter": "#D19A66",
@@ -14,8 +46,8 @@
       }
     }
   },
-  "editor.stickyScroll.enabled": true,
   "editor.stickyScroll.defaultModel": "foldingProviderModel",
+  "editor.stickyScroll.enabled": true,
   "editor.suggest.preview": true,
   "errorLens.codeLensEnabled": true,
   "errorLens.enabledDiagnosticLevels": [
@@ -25,6 +57,9 @@
     "hint"
   ],
   "errorLens.gutterIconsEnabled": true,
+  "files.associations": {
+    "*.bst": "yaml"
+  },
   "files.autoSave": "afterDelay",
   "files.trimTrailingWhitespace": true,
   "git.autofetch": true,
@@ -44,17 +79,19 @@
   "textmarker.enableTelemetry": false,
   "vim.easymotion": true,
   "vim.handleKeys": {
-      "<C-p>": false,
-      "<C-d>": true,
-      "<C-s>": false,
-      "<C-z>": false
+    "<C-p>": false,
+    "<C-d>": true,
+    "<C-s>": false,
+    "<C-z>": false
   },
   "vim.highlightedyank.enable": true,
   "vim.sneak": true,
   "window.commandCenter": true,
   "window.menuBarVisibility": "compact",
   "window.titleBarStyle": "custom",
-  "workbench.colorTheme": "Catppuccin Frappé",
-  "workbench.iconTheme": "catppuccin-frappe",
-  "workbench.preferredDarkColorTheme": "Catppuccin Frappé"
+  "workbench.colorTheme": "{{ $theme }}",
+{{- if eq .theme "catppuccin" }}
+  "workbench.iconTheme": "catppuccin-{{ .theme_suffix }}",
+{{- end }}
+  "workbench.preferredDarkColorTheme": "{{ $theme }}"
 }

@@ -5,6 +5,26 @@ if [[ $EUID -eq 0 ]] ; then
     unset SUDO
 fi
 
+install_vscode_extensions() {
+    command -v code &>/dev/null || return
+    local ext
+    for ext in \
+        anthropic.claude-code \
+        catppuccin.catppuccin-vsc \
+        catppuccin.catppuccin-vsc-icons \
+        charliermarsh.ruff \
+        dracula-theme.theme-dracula \
+        llvm-vs-code-extensions.lldb-dap \
+        llvm-vs-code-extensions.vscode-clangd \
+        mesonbuild.mesonbuild \
+        meta.pyrefly \
+        usernamehw.errorlens \
+        vscodevim.vim \
+        vsls-contrib.codetour ; do
+        code --install-extension "$ext"
+    done
+}
+
 install_ubuntu_container() {
     $SUDO apt install -y --no-install-recommends zoxide hstr eza duf neovim fd-find ripgrep fzf htop zsh zsh-autosuggestions \
                                                  bat ncdu kitty-terminfo less curl git git-absorb tig tree jq unzip mold wget2 \
@@ -41,6 +61,7 @@ install_ubuntu_desktop() {
         flatpak install -y flathub com.valvesoftware.Steam org.openrgb.OpenRGB
         $SUDO apt install gamemode
     fi
+    install_vscode_extensions
     nvim -es -u ~/.config/nvim/init.vim -i NONE -c "PlugInstall" -c "qa"
     # TODO chsh (use systemd-homed)
     uv tool install konsave # see also: konfsave
@@ -92,6 +113,7 @@ install_fedora_desktop() {
         flatpak install -y flathub com.valvesoftware.Steam
         echo 'compress="zstd"' | $SUDO tee /etc/dracut.conf.d/compress.conf
     fi
+    install_vscode_extensions
     nvim -es -u ~/.config/nvim/init.vim -i NONE -c "PlugInstall" -c "qa"
     # TODO chsh (use systemd-homed)
     uv tool install konsave # see also: konfsave
