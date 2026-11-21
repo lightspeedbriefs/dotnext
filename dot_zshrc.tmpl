@@ -358,6 +358,46 @@ _fzf_comprun() {
 [ -f /usr/share/fzf/shell/completion.zsh ] && source /usr/share/fzf/shell/completion.zsh
 [ -f /usr/share/fzf/shell/key-bindings.zsh ] && source /usr/share/fzf/shell/key-bindings.zsh
 
+# Ctrl-T picks files with kitty's choose-files kitten when running in kitty,
+# and keeps fzf's file widget everywhere else.
+if [[ -n $KITTY_WINDOW_ID ]] && (( $+commands[kitten] )) ; then
+    kitty-choose-files-widget() {
+        local selection
+        zle -I
+        selection=$(kitten choose-files --mode=files --output-format=shell-relative </dev/tty)
+        if [[ -n $selection ]] ; then
+            LBUFFER+="$selection "
+        fi
+        zle reset-prompt
+    }
+    zle -N kitty-choose-files-widget
+    bindkey '^T' kitty-choose-files-widget
+fi
+
+# Konsole only jumps between prompts if the shell marks them (OSC 133); kitty
+# and VS Code ship their own zsh integration that does this. The marks follow
+# the semantic-prompts spec: A starts the prompt, B ends it (so typed text
+# counts as input), C starts the output, D;<status> ends the command. D is only
+# sent after a command actually ran, not for an empty line or the first prompt.
+# This is the zsh equivalent of the bash snippet in Konsole's manual.
+if [[ -n $KONSOLE_VERSION && -z $KITTY_WINDOW_ID && $TERM_PROGRAM != vscode ]] ; then
+    _konsole_cmd_ran=0
+    _konsole_mark_prompt() {
+        local ret=$?
+        (( _konsole_cmd_ran )) && print -n '\e]133;D;'$ret'\a'
+        _konsole_cmd_ran=0
+        # A and B live inside the prompt, not in this hook: zle clears to the
+        # end of the screen when it draws the prompt and Konsole discards the
+        # marks on cleared lines, so an A printed here would be wiped. Prompt
+        # themes may rewrite PS1, so each mark is added only if missing.
+        [[ $PS1 == *'133;A'* ]] || PS1=$'%{\e]133;A\a%}'$PS1
+        [[ $PS1 == *'133;B'* ]] || PS1+=$'%{\e]133;B\a%}'
+    }
+    _konsole_mark_output() { _konsole_cmd_ran=1; print -n '\e]133;C\a' }
+    add-zsh-hook precmd _konsole_mark_prompt
+    add-zsh-hook preexec _konsole_mark_output
+fi
+
 {{ if eq .theme "catppuccin" -}}
 [ -f ~/.local/share/catppuccin-zsh-syntax-highlighting/catppuccin_{{ .theme_suffix }}-zsh-syntax-highlighting.zsh ] && source ~/.local/share/catppuccin-zsh-syntax-highlighting/catppuccin_{{ .theme_suffix }}-zsh-syntax-highlighting.zsh
 {{ else -}}

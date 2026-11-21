@@ -1,3 +1,5 @@
+# Keep PATH free of duplicates when nested shells re-run this file
+typeset -U path PATH
 binpaths=(~/.cargo/bin ~/.local/bin)
 dhpath=/usr/share/doc/git/contrib/diff-highlight
 if (( $+commands[diff-highlight] == 0 )) && [[ -x $dhpath/diff-highlight ]] ; then
@@ -22,6 +24,10 @@ if (( $+commands[code] )) && [[ "$TERM_PROGRAM" == vscode ]] ; then
     export EDITOR='code -r --wait'
     export VISUAL='code -r --wait'
     export SUDO_EDITOR='code -r --wait'
+elif (( $+commands[zed] )) && [[ "$TERM_PROGRAM" == zed ]] ; then
+    export EDITOR='zed --existing --wait'
+    export VISUAL='zed --existing --wait'
+    export SUDO_EDITOR='zed --existing --wait'
 elif (( $+commands[nvim] )) ; then
     export EDITOR=nvim
     export VISUAL=nvim
